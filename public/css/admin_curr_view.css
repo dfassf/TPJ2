@@ -1,0 +1,43 @@
+/* listLyaer > listBox */
+#listLayer > #listPage > #listBox{
+    width: 100%;
+    margin-top: 20px;
+}
+#listLayer > #listPage > #listBox > table{
+    width: 100%;
+    text-align: center;
+    border-top: 3px solid cornflowerblue;
+    border-bottom: 3px solid cornflowerblue;
+}
+#listLayer > #listPage > #listBox > table > tbody > tr > th{
+    background: blanchedalmond;
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+#listLayer > #listPage > #listBox > table > tbody > tr > td{
+    padding: 20px 20px;
+    font-size: 15px;
+    border-bottom: 1px solid #999;
+}
+#listLayer > #listPage > #listBox > table > tbody > tr > td > span{
+    margin-left: 5px;
+    margin-right: 10px;
+}
+#listLayer > #listPage > #listBox > table > tbody > tr:last-child > th{
+    border-bottom: none;
+}
+#listLayer > #listPage > #listBox > table > tbody > tr:last-child > td{
+    border-bottom: none;
+}
+#listLayer > #listPage > #listBox > table > tbody > tr > td:nth-child(2){
+    text-align: left;
+}
+#listLayer > #listPage > #listBox > div{
+    margin-top: 20px;
+    float: right;
+}
+#listLayer > #listPage > #listBox > div > button{
+    margin: 0px 5px;
+    padding: 5px 20px;
+    font-size: 15px;
+}

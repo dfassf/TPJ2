@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/jquery.fullPage.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+    </script>
+    <script src="/js/jquery.fullPage.js"></script>
+    <script src="/js/main.js"></script>
+</head>
+
+<body>
+{% include "./layout/top.html" %}
+
+    <style>
+        body{
+            background: none;
+        }
+        .header{
+            background: none;
+        }
+        .footer{
+            background: none;
+        }
+    </style>
+
+    <!--햄버거 메뉴-->
+    <div class="hamberger">
+        <input type="checkbox" id="menu">
+        <label for="menu" class="three_bar" onclick="menu_on()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </div>
+
+    <!--fullpage start-->
+    <div id="fullpage">
+        <div class="section section1">
+            <div class="container">
+                <h1>42 SEOUL은
+                    <br class="br_none">
+                    그동안 없었던
+                    <br>
+                    새로운 소프트웨어
+                    <br class="br_none">
+                    교육프로그램입니다.
+                </h1>
+                <p></p>
+                <a href="###" class="btn btn_1 mobile_float">교육과정</a>
+                <a href="###" class="btn btn_2 mobile_float">지원하기</a>
+            </div>
+        </div>
+        <div class="section section2">
+            <div class="container">
+                <h1>42 SEOUL은 <br class="br_none">열려있습니다.
+                </h1>
+                <p>
+                    우리는 당신의 스펙을 <br class="br_none">
+                    보지 않습니다.<br>
+                    오직 최고의 소프트웨어 개발자로 <br class="br_none">
+                    성공하고자 하는<br>
+                    "당신의 도전"만 봅니다.
+                </p>
+                <a href="###" class="btn btn_1 mobile_float">교육과정</a>
+                <a href="###" class="btn btn_2 mobile_float">지원하기</a>
+            </div>
+        </div>
+        <div class="section section3">
+            <div class="container">
+                <h1>
+                    42 SEOUL은 다릅니다.
+                </h1>
+                <p>
+                    진도와 과제를 따라가는 <br class="br_none">
+                    수동적인 방식이 아닌,<br>
+                    동료와 협업하고 토론하는 <br class="br_none">
+                    과정을 통해<br>
+                    능동적으로 성장하는 방식을 <br class="br_none">지향합니다.
+                </p>
+                <a href="###" class="btn btn_1 mobile_float">교육과정</a>
+                <a href="###" class="btn btn_2 mobile_float">지원하기</a>
+            </div>
+        </div>
+        <div class="section section4">
+            <div class="container">
+                <h1>
+                    42 SEOUL은 믿고 있습니다.
+                </h1>
+                <p>
+                    최고의 교육은 최고의 환경과 <br class="br_none">
+                    동료로부터 나옵니다.<br>
+                    우리는 최고의 소프트웨어 <br class="br_none">
+                    개발자로 함께 성장할<br>
+                    당신의 도전을 기다립니다.
+                </p>
+                <a href="###" class="btn btn_1 mobile_float">교육과정</a>
+                <a href="###" class="btn btn_2 mobile_float">지원하기</a>
+            </div>
+        </div>
+        <div class="section section5">
+            <div class="container">
+                <h1>
+                    42 SEOUL이 여러분을 돕겠습니다.
+                </h1>
+                <p>
+                    42 SEOUL은 여러분이 성장에만 <br class="br_none">
+                    집중할 수 있길 바랍니다.<br>
+                    월 100만 원 상당의 교육지원금,<br class="br_none">
+                    최고의 멘토진,그리고<br>
+                    다양한 기업과의 현장 경험 등 <br class="br_none">
+                    최고의 환경을 준비했습니다.<br>
+                    우리가 돕겠습니다. 여러분은 <br class="br_none">
+                    오직 성장에 집중하세요
+                </p>
+                <a href="###" class="btn btn_1 mobile_float">교육과정</a>
+                <a href="###" class="btn btn_2 mobile_float">지원하기</a>
+            </div>
+            <!--fullpage end-->
+
+            <!--햄버거 메뉴 눌렀을때 나올 흰 바탕 화면 --- absolute,hide 이용해서 숨어있다가 메뉴 누르면 display 변화식으로-->
+            <!--mobile hamberger menu start-->
+            <div class="menu_container menu_clicked">
+                <input type="checkbox" id="menu1">
+                <label for="menu1" class="x_bar" onclick="menu_out()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <h1>학원소개</h1>
+                <h1>교육과정</h1>
+                <h1>취업자인터뷰</h1>
+                <h1>알람 및 질문</h1>
+                <h1>지원서</h1>
+                <h1>로그인</h1>
+                <h1>회원가입</h1>
+                <a href="###" class="mobile_apply">지원하기</a>
+            </div>
+            <!--mobile hamberger menu end-->
+
+{% include "./layout/bottom.html" %}

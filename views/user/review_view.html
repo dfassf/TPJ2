@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>review_view</title>
+    <script type="text/javascript" src="/js/review_view.js"></script>
+    <link rel="stylesheet" href="/css/review_view.css">
+</head>
+
+<body>
+{% include "../layout/top.html" %}
+
+    <!--review_view start-->
+    <div id="boardLayer">
+        <div id="boardPage">
+            <div id="boardBox">
+                <h1>수강후기</h1>
+                <div id="content">
+                    <div id="space" style="height: 35px;"></div>
+                    <div id="boardOuter">
+                        <table id="board">
+                            <thead>
+                                <tr>
+                                    <th>제목</th>
+                                    <td>{{result.title}}</td>
+                                    <input type="hidden" style="display:none" name="postid" id="postId" value="{{result.id}}">
+                                    <th>작성자</th>
+                                    <td>{{result.userid}}</td>
+                                </tr>
+                                <tr>
+                                    <th>등록일</th>
+                                    <td>{{result.date}}</td>
+                                    <th>조회수</th>
+                                    <td>{{result.hit}}</td>
+                                </tr>
+                                <tr>
+                                    <th>강의명</th>
+                                    <td colspan="3">{{getSub}}</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">
+                                        <pre>{{result.content}}</pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="btnGroup_center">
+                        <button type="button" onclick="location.href='http://localhost:3000/review/pwchk?id={{result.id}}'">수정</button>
+                        <button type="button" id="delBtn">삭제</button>
+                        <button type="button" onclick="location.href='http://localhost:3000/review/'">목록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--review_view end-->
+
+{% include "../layout/bottom.html" %}

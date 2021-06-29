@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/join_complete.css">
+    <title>join_complete</title>
+</head>
+
+<body>
+{% include "./layout/top.html" %}
+
+    <!--join_complete start-->
+    <div class="container">
+        <input type="checkbox" id="menu2">
+        <label for="menu2">
+            <span></span>
+            <span></span>
+        </label>
+        <h1>{{username}}님의 회원가입을 진심으로 축하드립니다.</h1>
+        <h1>가입하신 아이디는 {{userid}}입니다.</h1>
+        <div class="bottom_box">
+            <ul class="box_li">
+                <a href="http://localhost:3000/">
+                    <li>메인으로</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <!--join_complete end-->
+
+{% include "./layout/bottom.html" %}

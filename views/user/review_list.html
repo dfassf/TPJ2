@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>review_list</title>
+    <script type="text/javascript" src="/js/review_list.js"></script>
+    <link rel="stylesheet" href="/css/review_list.css">
+</head>
+
+<body>
+{% include "../layout/top.html" %}
+
+    <!--review_list start-->
+    <div id="boardLayer">
+        <div id="boardPage">
+            <div id="boardBox">
+                <h1>수강후기</h1>
+                <div id="content">
+                    <div id="space" style="height: 35px;"></div>
+                    <div id="boardOuter">
+                        <table id="board">
+                            <colgroup>
+                                <col width="5%">
+                                <col width="30%">
+                                <col width="10%">
+                                <col width="5%">
+                                <col width="5%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>제목</th>
+                                    <th>등록일</th>
+                                    <th>작성자</th>
+                                    <th>조회수</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if ifEmpty == true %}
+                                <tr>
+                                    <td id="number"></td>
+                                    <td id="subject">표시할 데이터가 없습니다.</td>
+                                    <td id="date"></td>
+                                    <td id="writer"></td>
+                                    <td id="hit"></td>
+                                </tr>
+                                {% else %}
+                                {% for item in revList %}
+                                <tr>
+                                    <td id="number">{{item.num}}</td>
+                                    <td id="subject"><a href="/review/view?id={{item.id}}">{{item.title}}</a></td>
+                                    <td id="date">{{item.date}}</td>
+                                    <td id="writer">{{item.userid}}</td>
+                                    <td id="hit">{{item.hit}}</td>
+                                </tr>
+                                <div style="display:none">{{item.id}}</div>
+                                {% endfor %}
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="btnGroup_right">
+                        <button type="button" onclick="location.href='http://localhost:3000/review/write'">수강후기
+                            작성하기</button>
+                    </div>
+                    <div id="pageBtn">
+                        {% if ifEmpty == true %}
+                        {% else %}
+
+                        <button type="button" onclick="location.href='/review/search?id=1&srcCtg={{srcCtg}}&keyword={{keyword}}'">&lt;&lt;</button>
+                        <button type="button" onclick="location.href='/review/search?id={{prevBlock}}&srcCtg={{srcCtg}}&keyword={{keyword}}'">&lt;</button>
+                        {% for item in block_arr %}
+                            {% if page==item %}
+                            <button type="button" id = "pageNum" style="color:dodgerblue;"  onclick="location.href='/review/search?id={{item}}&srcCtg={{srcCtg}}&keyword={{keyword}}'">{{item}}</button>
+                            {% else %}
+                            <button type="button" id = "pageNum"  onclick="location.href='/review/search?id={{item}}&srcCtg={{srcCtg}}&keyword={{keyword}}'">{{item}}</button>
+                            {% endif %}
+                        {% endfor %}
+                        <button type="button" onclick="location.href='/review/search?id={{nextBlock}}&srcCtg={{srcCtg}}&keyword={{keyword}}'">&gt;</button>
+                        <button type="button" onclick="location.href='/review/search?id={{total_page}}&srcCtg={{srcCtg}}&keyword={{keyword}}'">&gt;&gt;</button>
+                        {% endif %}
+                    </div>
+                    <div id="searchBtn">
+                        <form id="srcForm">
+                            <select name="revSrc" id="revSrc">
+                                <option class="revSrcOpt" value="all" id="srcallSel">전체</option>
+                                <option class="revSrcOpt" value="title" id="srctitle">제목</option>
+                                <option class="revSrcOpt" value="userid" id="srcUserid">작성자</option>
+                                <option class="revSrcOpt" value="content" id="srcContent">내용</option>
+                            </select>
+                            <script type="text/javascript">
+                                let revSrcOpt = document.querySelectorAll('.revSrcOpt');
+                                for (let i = 0; i < revSrcOpt.length; i++) {
+                                    console.log("{{srcCtg}} {{keyword}}")
+                                    if (revSrcOpt[i].value == "{{srcCtg}}") {
+                                        revSrcOpt[i].selected = true;
+                                    }
+                                }
+                            </script>
+                            <input type="text" id=srcTxt name="srcTxt" value="{{keyword}}">
+                            <button type="button" id="srcBtn">검색</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--review_list end-->
+
+{% include "../layout/bottom.html" %}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>review_list</title>
+    <link rel="stylesheet" href="/css/admin_review_list.css">
+    <script type="text/javascript" src="/js/admin_review_list.js"></script>
+</head>
+{% include "../logincheck.html" %}
+
+<body>
+    <div id="wrap">
+        {% include "../layout/admin_top.html" %}
+
+        <!--review_list start-->
+        <div id="content">
+
+            <div id="listLayer">
+                <div id="listPage">
+                    <h2>수강후기 List</h2>
+                    <div id="searchBox">
+                        <ul>
+                            <li>
+                                <span>검색종류</span>
+                                <select name="revSrc" id="revSrc">
+                                    <option class="revSrcOpt" value="all" id="srcallSel">전체</option>
+                                    <option class="revSrcOpt" value="title" id="srcTitle">제목</option>
+                                    <option class="revSrcOpt" value="userid" id="srcUserid">아이디</option>
+                                    <option class="revSrcOpt" value="content" id="srcContent">내용</option>
+                                    <option class="revSrcOpt" value="curriculum" id="srcCurriculum">교육과정</option>
+                                </select>
+                                <script type="text/javascript">
+                                    let revSrcOpt = document.querySelectorAll('.revSrcOpt');
+                                    for (let i = 0; i < revSrcOpt.length; i++) {
+                                        console.log("{{srcCtg}} {{keyword}}")
+                                        if (revSrcOpt[i].value == "{{srcCtg}}") {
+                                            revSrcOpt[i].selected = true;
+                                        }
+                                    }
+                                </script>
+                                <input type="text" id=srcTxt name="srcTxt" value="{{keyword}}">
+                            </li>
+                            <li>
+                                <button type="submit" id="srcBtn">검색</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="listBox">
+                        <table>
+                            <colgroup>
+                                <col width="5%">
+                                <col width="20%">
+                                <col width="20%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="5%">
+                                <col width="5%">
+                                <col width="5%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>제목</th>
+                                    <th>교육과정명</th>
+                                    <th>아이디</th>
+                                    <th>등록일</th>
+                                    <th>조회수</th>
+                                    <th>보임/숨김</th>
+                                    <th>삭제</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if ifEmpty == true %}
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        표시할 데이터가 없습니다.
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                {% for items in reviewList %}
+                                <tr>
+                                    <td>
+                                        {{items.num}}
+                                    </td>
+                                    <td>
+                                        <a href="http://localhost:3000/admin/review/view?id={{items.id}}">
+                                            <span>{{items.title}}</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {{items.subject}}
+                                    </td>
+                                    <td>
+                                        {{items.userid}}
+                                    </td>
+                                    <td>
+                                        {{items.date}}
+                                    </td>
+                                    <td>
+                                        {{items.hit}}
+                                    </td>
+                                    <td>
+                                        {% if items.show == true %}
+                                        보임
+                                        {% elif items.show == false %}
+                                        숨김
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="delEach" onclick="location.href='http://localhost:3000/admin/review/delete?id={{items.id}}'">삭제</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="pageBtn">
+                        {% if ifEmpty == true %}
+                        {% else %}
+
+                        <button type="button" onclick="location.href='/admin/review/search?id=1&srcCtg={{srcCtg}}&keyword={{keyword}}'">&lt;&lt;</button>
+                        <button type="button" onclick="location.href='/admin/review/search?id={{prevBlock}}&srcCtg={{srcCtg}}&keyword={{keyword}}'">&lt;</button>
+                        {% for item in block_arr %} 
+                            {% if page==item %}
+                            <button type="button" id="pageNum" style="color:dodgerblue;" onclick="location.href='/admin/review/search?id={{item}}&srcCtg={{srcCtg}}&keyword={{keyword}}'">{{item}}</button>
+                            {% else %}
+                            <button type="button" id="pageNum" onclick="location.href='/admin/review/search?id={{item}}&srcCtg={{srcCtg}}&keyword={{keyword}}'">{{item}}</button>
+                            {% endif %}
+                        {% endfor %}
+                        <button type="button" onclick="location.href='/admin/review/search?id={{nextBlock}}&srcCtg={{srcCtg}}&keyword={{keyword}}'">&gt;</button>
+                        <button type="button" onclick="location.href='/admin/review/search?id={{total_page}}&srcCtg={{srcCtg}}&keyword={{keyword}}'">&gt;&gt;</button>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--review_list end-->
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>curriculum_list</title>
+    <link rel="stylesheet" href="/css/admin_curr_list.css">
+    <script type="text/javascript" src="/js/admin_curr_list.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        {% include "../layout/admin_top.html" %}
+
+        <!--curriculum_list start-->
+        <div id="content">
+            <div id="listLayer">
+                <div id="listPage">
+                    <h2>교육과정 List</h2>
+                    <div id="searchBox">
+                        <ul>
+                            <form id="srcForm" method="post" action="/admin/curr/search">
+                                <li>
+                                    <span>교육과정명</span>
+                                    <select name="srcid" id="srcId">
+                                        <option value="">선택</option>
+                                        {% for item in totalCurr %}
+                                        <option value="{{item.id}}">{{item.subject}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </li>
+                                <li>
+                                    <span>진행여부</span>
+                                    <select name="recruit" id="srcRecruit">
+                                        {% if recruit == '1' %}
+                                        <option value="">선택</option>
+                                        <option value="1" selected>현재모집중</option>
+                                        <option value="0">모집마감</option>
+                                        {% elif recruit == '0' %}
+                                        <option value="">선택</option>
+                                        <option value="1">현재모집중</option>
+                                        <option value="0" selected>모집마감</option>
+                                        {% else %}
+                                        <option value="">선택</option>
+                                        <option value="1">현재모집중</option>
+                                        <option value="0">모집마감</option>
+                                        {% endif %}
+                                    </select>
+                                </li>
+                                <li>
+                                    <span>숨김여부</span>
+                                    <select name="show" id="srcShow">
+                                        {% if show == '1' %}
+                                        <option value="">선택</option>
+                                        <option value="1" selected>보임</option>
+                                        <option value="0">숨김</option>
+                                        {% elif show =='0' %}
+                                        <option value="">선택</option>
+                                        <option value="1">보임</option>
+                                        <option value="0" selected>숨김</option>
+                                        {% else %}
+                                        <option value="">선택</option>
+                                        <option value="1">보임</option>
+                                        <option value="0">숨김</option>
+                                        {% endif %}
+                                    </select>
+                                </li>
+                                <li>
+                                    <span>등록기간</span>
+                                    <input type="date" name="start_date" id="srcStartDate" value="{{start_date}}">
+                                    <span>~</span>
+                                    <input type="date" name="end_date" id="srcEndDate" value="{{end_date}}">
+                                </li>
+                            </form>
+                            <li>
+                                <button type="button" id="srcBtn">검색</button>
+                            </li>
+                        </ul>
+
+                        <div id="btnGroup_right">
+                            <input type="checkbox" id="selAll"><span> 전체 선택</span>
+                            <button type="button" id="addBtn">새 과정 추가</button>
+                            <button type="button" id="delBtn">선택 삭제</button>
+                        </div>
+                    </div>
+                    <div id="listBox">
+                        <form id="selDel" method="POST" action="/admin/curr/delete">
+                            <table>
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="40%">
+                                    <col width="10%">
+                                    <col width="5%">
+                                    <col width="5%">
+                                    <col width="5%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>세부내용</th>
+                                        <th>진행여부</th>
+                                        <th>보임/숨김</th>
+                                        <th>수정</th>
+                                        <th>삭제</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if ifEmpty == true%}
+                                    <tr>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            표시할 데이터가 없습니다.
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                    {% for item in currList %}
+                                    <tr>
+                                        <td>
+                                            <input class="selOpt" type="checkbox" name="selDelItems" value={{item.id}}>
+                                            {{item.num}}
+                                            <!-- <input class = "nuu" value="{{item.id}}" style="display:none"> -->
+                                        </td>
+                                        <td>
+                                            <a href="http://localhost:3000/admin/curr/view?id={{item.id}}">
+                                                <span>{{item.subject}}</span>
+                                                <p>{{item.content}}</p>
+                                            </a>
+                                        </td>
+                                        <td id="recruit">
+                                            {% if item.recruit == true %}
+                                            현재 모집 중
+                                            {% elif item.recruit == false %}
+                                            모집 마감
+                                            {% else %}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if item.show == true %}
+                                            보임
+                                            {% elif item.show == false %}
+                                            숨김
+                                            {% else %}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <button type="button"
+                                                onclick="location.href='http://localhost:3000/admin/curr/modify?id={{item.id}}'">수정</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="delEach">삭제</button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <div id="pageBtn">
+                        {% if ifEmpty == true %}
+                        {% else %}
+                        <button type="button" onclick="location.href='/admin/curr/search?id=1&srcid={{srcid}}&recruit={{recruit}}&show={{show}}&start_date={{start_date}}&end_date={{end_date}}'">&lt;&lt;</button>
+                        <button type="button" onclick="location.href='/admin/curr/search?id={{prevBlock}}&srcid={{srcid}}&recruit={{recruit}}&show={{show}}&start_date={{start_date}}&end_date={{end_date}}'">&lt;</button>
+                        {% for item in block_arr %}
+                            {% if page==item %}
+                            <button type="button" id="pageNum" style="color:dodgerblue;" onclick="location.href='/admin/apply/search?id={{item}}&curr_id={{curr_id}}&username={{username}}&start_date={{start_date}}&end_date={{end_date}}'">{{item}}</button>
+                            {% else %}
+                            <button type="button" id="pageNum" onclick="location.href='/admin/curr/search?id={{item}}&srcid={{srcid}}&recruit={{recruit}}&show={{show}}&start_date={{start_date}}&end_date={{end_date}}'">{{item}}</button>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <button type="button" onclick="location.href='/admin/curr/search?id={{nextBlock}}&srcid={{srcid}}&recruit={{recruit}}&show={{show}}&start_date={{start_date}}&end_date={{end_date}}'">&gt;</button>
+                        <button type="button" onclick="location.href='/admin/curr/search?id={{total_page}}&srcid={{srcid}}&recruit={{recruit}}&show={{show}}&start_date={{start_date}}&end_date={{end_date}}'">&gt;&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--curriculum_list end-->
+
+    </div>
+</body>
+
+</html>

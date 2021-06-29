@@ -1,0 +1,212 @@
+*{
+    margin:0;
+    padding:0;
+    user-select: none;
+}
+div{
+    display: block;
+}
+ul,li{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+    box-sizing: inherit;
+}
+
+/* 크기 조절 */
+#space{
+    width: 100%;
+}
+
+/* 메뉴바 */
+.header{
+    width: 1920px;
+    height: 56px;
+    position: fixed;
+    background: #000;
+    z-index: 98;
+}
+.header>a>img{
+    width: 80px;
+    height: 56px;
+    padding-left: 50px;
+}
+.header_menu{
+    float: right;
+    margin: 16px 50px 0 0;
+}
+.header_menu>a{
+    color: white;
+    font-size: 18px;
+    padding: 16px;
+}
+
+/* 로그인 */
+#loginLayer{
+    display:none;
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#000000a6;
+    z-index: 99;
+}
+#loginLayer.show{
+    display: block;
+}
+#loginLayer > #loginPopup{
+    width:500px;
+    height:400px;
+    margin: 0 auto;
+    padding: 50px 0px;
+    color: #fff;
+    text-align: center;
+    border: 1px solid rgb(0, 143, 190);
+    background-image: URL(../../img/loginLayer_bg.jpg);
+    background-position: top;
+}
+#loginLayer > #loginPopup > #loginForm > h2{
+    margin-bottom: 40px;
+}
+#loginLayer > #loginPopup > #loginForm > input{
+    width: 378px;
+    height: 18px;
+    margin-top: 10px;
+    padding: 10px;
+    color: #fff;
+    background: #000e2b;
+    border: 1px solid #666;
+}
+#loginLayer > #loginPopup > #loginForm > input:hover{
+    border: 1px solid lightyellow;
+    transition: 0.5s;
+}
+#loginLayer > #loginPopup > #loginForm > button{
+    width: 400px;
+    height: 28px;
+    margin: 30px 0px;
+    border: 1px solid #007bc6;
+    border-radius: 5px;
+    color: lightyellow;
+    background: #006fb2;
+    cursor: pointer;
+}
+#loginLayer > #loginPopup > #loginForm > button:hover{
+    border: 1px solid rgb(17, 230, 230);
+    filter: brightness(130%);
+    transition: 0.75s;
+}
+#loginLayer > #loginPopup > #loginForm > #or{
+    width: 400px;
+    margin: 0 auto;
+}
+#loginLayer > #loginPopup > #loginForm > #or > #line{
+    width: 170px;
+    float: left;
+    border-top: 1px solid lightgray;
+}
+#loginLayer > #loginPopup > #loginForm > #or > #or_text{
+    position: absolute;
+    margin-left: 184px;
+    top: 500px;
+}
+#loginLayer > #loginPopup > #loginForm > #or > #or_text > h3{
+    font-size: 15px;
+    color: lightgray;
+}
+#loginLayer > #loginPopup > #loginForm > h3{
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+#loginLayer > #loginPopup > #loginForm > h3 > a{
+    color: lightslategray;
+}
+#loginLayer > #loginPopup > #loginForm > h3 > a:hover{
+    color: lightyellow;
+    transition: 0.5s;
+}
+
+/* FAQ */
+#FAQLayer{
+    width: 1920px;
+    height: 100%;
+    padding-top: 56px;
+}
+#FAQLayer > #FAQPage{
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+#FAQLayer > #FAQPage > #FAQBox{
+    width: 1160px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 50px 20px 140px 20px;
+}
+#FAQLayer > #FAQPage > #FAQBox > h1{
+    margin-bottom: 60px;
+    font-size: 60px;
+    color: #fff;
+}
+#FAQLayer > #FAQPage > #FAQBox > #category{
+    height: 55px;
+    margin-bottom: 40px;
+}
+#FAQLayer > #FAQPage > #FAQBox > #category > div{
+    height: 25px;
+    padding: 14px 24px;
+    margin-right: 10px;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: -1px;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    cursor: pointer;
+}
+#FAQLayer > #FAQPage > #FAQBox > #category > div:hover{
+    color: #000;
+    transition: 0.5s;
+    background: #fff;
+}
+#FAQLayer > #FAQPage > #FAQBox > #QNA{
+    display: none;
+    width: 1160px;
+}
+#FAQLayer > #FAQPage > #FAQBox > #QNA > div{
+    padding: 20px 30px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #fff;
+    border-top: none;
+    cursor: pointer;
+}
+#FAQLayer > #FAQPage > #FAQBox > #QNA > div:first-child{
+    border-top: 1px solid #fff;
+}
+#FAQLayer > #FAQPage > #FAQBox > #QNA > div > span{
+    font-size: 20px;
+    line-height: 15px;
+    float: right;
+}
+#FAQLayer > #FAQPage > #FAQBox > #QNA > div:hover{
+    color: #000;
+    background: #fff;
+    transition: 0.25s;
+}
+#FAQLayer > #FAQPage > #FAQBox > #QNA > ul{
+    display: none;
+    padding: 60px 40px;
+    border: 1px solid #fff;
+    border-top: none;
+    cursor: pointer;
+}
+#FAQLayer > #FAQPage > #FAQBox > #QNA > ul > li{
+    margin: 20px 0px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+}

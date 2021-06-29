@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 공지사항 리스트 -->
+    <div id="main" class="center">
+        <div id="board">
+            <table id="list">   
+                <tr>
+                    <td>No.</td>
+                    <td>Title</td>
+                    <td>Writer</td>
+                    <td>Date</td>
+                    <td>Hit</td>
+                </tr>
+                {% for item in noticeList %}
+
+                <tr>
+                    <td>{{item.num}}</td>
+                    <td><a href="/notice/view?id={{item.id}}">{{item.title}}</a></td>
+                    <!-- 관리자 라는 이름으로 삽입? -->
+                    <td>{{item.writer}}</td>
+                    <td>{{item.date}}</td>
+                    <td>{{item.hit}}</td>
+                </tr>
+
+                <div style="display:none">{{item.id}}</div>
+                {% endfor %}
+                
+            </table>
+        </div>
+    </div>
+</body>
+{% include "./layout/bottom.html" %}

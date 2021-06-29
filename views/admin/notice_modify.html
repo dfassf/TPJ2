@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notice_modify</title>
+    <link rel="stylesheet" href="/css/admin_notice_modify.css">
+</head>
+
+<body>
+    <div id="wrap">
+        {% include "../layout/admin_top.html" %}
+
+        <!--notice_modify start-->
+        <div id="content">
+            <div id="listLayer">
+                <div id="listPage">
+                    <h2>공지사항 Modify</h2>
+                    <div id="listBox">
+                        <form id="submitMod" method="POST" action="/admin/notice/modify_success">
+                            <table>
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="90%">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>제목</th>
+                                        <td><input id="text" type="text" name="title" value="{{result.title}}" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>내용</th>
+                                        <td>
+                                            <textarea name="content" required>{{result.content}}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>보임/숨김 설정</th>
+                                        <td>
+                                            {%if result.show == 1 %}
+                                            <input type="radio" name="show" value="1" checked required><span>보임</span>
+                                            <input type="radio" name="show" value="0" required><span>숨김</span>
+                                            {% elif result.show == 0 %}
+                                            <input type="radio" name="show" value="1" required><span>보임</span>
+                                            <input type="radio" name="show" value="0" checked required><span>숨김</span>
+                                            {% else %}
+                                            <input type="radio" name="show" value="1" required><span>보임</span>
+                                            <input type="radio" name="show" value="0" required><span>숨김</span>
+                                            {%endif %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div style="display:none"><input name="boardid" value="{{boardid}}"></div>
+                            <div>
+                                <button type="submit">수정완료</button>
+                                <button type="button" onclick="location.href='http://localhost:3000/admin/notice/view?id={{boardid}}'">취소</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--notice_modify end-->
+
+    </div>
+</body>
+
+</html>

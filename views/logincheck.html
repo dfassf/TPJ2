@@ -1,0 +1,30 @@
+{% if reviewAuth != undefined %}
+<script type="text/javascript">
+    let msg = `{{reviewAuth.msg}}`
+    let move = `{{reviewAuth.move}}`;
+
+    alert(msg)
+    window.location.href = move
+</script>
+{%  endif %}
+
+{% if adminDelAuth != undefined %}
+<script type="text/javascript">
+    let msg = `{{adminDelAuth.msg}}`
+    let move = `{{adminDelAuth.move}}`;
+    
+    alert(msg)
+    window.location.href = move
+</script>
+{%  endif %}
+
+{% if userAuth != undefined %}
+<script type="text/javascript">
+    let msg = `{{userAuth.msg}}`
+    let move = `{{userAuth.move}}`;
+    
+    alert(msg)
+    window.location.href = move
+</script>
+{%  endif %}
+

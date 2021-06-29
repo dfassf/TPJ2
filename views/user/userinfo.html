@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userinfo</title>
+    <script type="text/javascript" src="/js/userinfo.js"></script>
+    <link rel="stylesheet" href="/css/userinfo.css">
+
+    <script type="text/javascript" src="../../public/js/userinfo.js"></script>
+    <link rel="stylesheet" href="/public/css/userinfo.css">
+</head>
+
+<body>
+{% include "../layout/top.html" %}
+{% include '../logincheck.html' %}
+    <!--userinfo start-->
+    <div id="infoLayer">
+        <div id="infoPage">
+            <div id="infoBox">
+                <h1>회원정보</h1>
+                <div id="content">
+                    <h3>아이디 / 비밀번호</h3>
+                    <form id="userInfo" method="POST" action="info_success">
+                        <ul>
+                            <li>아이디</li>
+                            <li>
+                                <span>{{result.userid}}</span>
+                                <input id="userid" name="userid" type="text" value="기존아이디" style="display: none;">
+                                <!-- js에서 비밀번호 유효성 검사 확인용-->
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>비밀번호</li>
+                            <li>
+                                <input id="userpw" name="userpw" type="password" placeholder="기존 또는 새 비밀번호를 입력해주세요." required>
+                                <p id="userpw_msg"></p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>비밀번호 확인</li>
+                            <li>
+                                <input id="userpw_check" name="userpw_check" type="password" placeholder="다시 한 번 입력해주세요." required>
+                                <p id="userpw_check_msg"></p>
+                            </li>
+                        </ul>
+
+                        <div id="space" style="height: 30px;"></div>
+
+                        <h3>그 외 정보</h3>
+                        <ul>
+                            <li>이름</li>
+                            <li>
+                                <input id="username" name="username" type="text" placeholder="기존이름" value="{{result.username}}" required>
+                                <p id="username_msg"></p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>성별</li>
+                            <li>
+                                <span>{{gender}}</span>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>휴대폰번호</li>
+                            <li>
+                                <input id="userphone" name="userphone" type="text" placeholder="기존휴대폰번호" value="{{result.userphone}}"required>
+                                <p id="userphone_msg"></p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>이메일</li>
+                            <li>
+                                <input id="useremail" name="useremail" placeholder="기존이메일주소" type="text" value="{{result.useremail}}">
+                                <p id="useremail_msg"></p>
+                            </li>
+                        </ul>
+                        
+                        <div id="btnGroup_center">
+                            <button type="submit" id="submit">확인</button>
+                            <button type="button" onclick="history.back(-1);">이전으로</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--userinfo end-->
+
+{% include "../layout/bottom.html" %}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apply_list</title>
+    <link rel="stylesheet" href="/css/admin_apply_list.css">
+    <script type="text/javascript" src="/js/admin_apply_list.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        {% include "../layout/admin_top.html" %}
+
+        <!--apply_list start-->
+        <div id="content">
+            <div id="listLayer">
+                <div id="listPage">
+                    <h2>지원하기 List</h2>
+                    <div id="searchBox">
+                        <ul>
+                            <form id="srcForm" method="post" action="/admin/apply/search">
+                                <li>
+                                    <span>교육과정명</span>
+                                    <select id="srcId" name="srcid">
+                                        <option value="">선택</option>
+                                        {% for item in totalCurr %}
+                                        <option class="currInt" value="{{item.id}}">{{item.subject}}</option>
+                                        {% endfor %}
+                                        {% for item in searchCurr %}
+                                        <option class="currInt" value="{{item.id}}">{{item.subject}}</option>
+                                        {% endfor %}
+
+                                        <script type="text/javascript">
+                                            let currInt = document.querySelectorAll('.currInt');
+                                            console.log({{currName}})
+                                            for (let i = 0; i < currInt.length; i++) {
+                                                if (currInt[i].value == '{{curr_id}}') {
+                                                    currInt[i].selected = true;
+                                                }
+                                                // else{ctgDft.selected = true }
+                                            }
+                                        </script>
+
+                                    </select>
+                                </li>
+                                <li>
+                                    <span>이름</span>
+                                    <input type="text" id="srcName" name="name" value="{{username}}">
+                                </li>
+                                <li>
+                                    <span>등록기간</span>
+                                    <input type="date" id="srcStartDate" name="start_date" value="{{start_date}}">
+                                    <span>~</span>
+                                    <input type="date" id="srcEndDate" name="end_date" value="{{end_date}}">
+                                </li>
+                            </form>
+                            <li>
+                                <button type="button" id="srcBtn">검색</button>
+                            </li>
+                        </ul>
+                        <div id="btnGroup_right">
+                            <input type="checkbox" id="selAll"><span>전체 선택</span>
+                            <button type="button" id="delBtn">선택 삭제</button>
+                        </div>
+                    </div>
+                    <div id="listBox">
+                        <form id="selDel" method="POST" action="/admin/apply/delete">
+                            <table>
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="40%">
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="5%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>교육과정명</th>
+                                        <th>이름</th>
+                                        <th>신청일</th>
+                                        <th>삭제</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if ifEmpty == true %}
+                                    <tr>
+                                        <td></td>
+                                        <td>표시할 데이터가 없습니다.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    {% else %}
+                                    {% for item in applyList %}
+                                    <tr>
+                                        <td>
+                                            <input class="selOpt" type="checkbox" name="selDelItems" value={{item.id}}>
+                                            {{item.num}}
+                                        </td>
+                                        <td>
+                                            <a href="http://localhost:3000/admin/apply/view?id={{item.id}}">
+                                                <span>{{item.subject}}</span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {{item.username}}
+                                        </td>
+                                        <td>
+                                            {{item.date}}
+                                        </td>
+                                        <td>
+                                            <button type="button" class="delEach" onclick="location.href='http://localhost:3000/admin/apply/delete?id={{item.id}}'">삭제</button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <div id="pageBtn">
+                        <button type="button" onclick="location.href='/admin/apply/search?id=1&curr_id={{curr_id}}&username={{username}}&start_date={{start_date}}&end_date={{end_date}}'">&lt;&lt;</button>
+                        <button type="button" onclick="location.href='/admin/apply/search?id={{prevBlock}}&curr_id={{curr_id}}&username={{username}}&start_date={{start_date}}&end_date={{end_date}}'">&lt;</button>
+                        {% for item in block_arr %}
+                            {% if page==item %}
+                            <button type="button" id="pageNum" style="color:dodgerblue;" onclick="location.href='/admin/apply/search?id={{item}}&curr_id={{curr_id}}&username={{username}}&start_date={{start_date}}&end_date={{end_date}}'">{{item}}</button>
+                            {% else %}
+                            <button type="button" id="pageNum" onclick="location.href='/admin/apply/search?id={{item}}&curr_id={{curr_id}}&username={{username}}&start_date={{start_date}}&end_date={{end_date}}'">{{item}}</button>
+                            {% endif %}
+                        {% endfor %}
+                        <button type="button" onclick="location.href='/admin/apply/search?id={{nextBlock}}&curr_id={{curr_id}}&username={{username}}&start_date={{start_date}}&end_date={{end_date}}'">&gt;</button>
+                        <button type="button" onclick="location.href='/admin/apply/search?id={{total_page}}&curr_id={{curr_id}}&username={{username}}&start_date={{start_date}}&end_date={{end_date}}'">&gt;&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--apply_list end-->
+
+    </div>
+</body>
+
+</html>

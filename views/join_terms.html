@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>join_terms</title>
+    <link rel="stylesheet" href="/css/join.css">
+</head>
+
+<body>
+{% include "./layout/top.html" %}
+
+    <!--Join_terms start-->
+    <div id="joinLayer">
+        <div id="joinPage">
+            <form id="submitCheck" method="GET" action="/user/join_signup">
+                <div id="joinBox">
+                    <h2>회원가입</h2>
+                    <div id="joinContent">
+                        <div id="joinImageBox">
+                            <div id="joinImage">
+                                <img src="/images/character.png">
+                            </div>
+                        </div>
+                        <h5>회원가입 약관 동의 단계입니다.</h5>
+                        <div id="termsBox">
+                            <div id="terms">
+                                <div id="termsTitle">
+                                    <h5>홈페이지 이용약관 동의
+                                        <span>(필수)</span>
+                                        <input type="checkbox" required>
+                                    </h5>
+                                </div>
+                                <div id="termsText">
+                                    <div id="termsTextInner">
+                                        내용1<br />내용1<br />내용1<br />내용1<br />내용1<br />
+                                        내용1<br />내용1<br />내용1<br />내용1<br />내용1<br />
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="terms">
+                                <div id="termsTitle">
+                                    <h5>개인정보 수집 및 이용 동의
+                                        <span>(필수)</span>
+                                        <input type="checkbox" required>
+                                    </h5>
+                                </div>
+                                <div id="termsText">
+                                    <div id="termsTextInner">
+                                        내용2<br />내용2<br />내용2<br />내용2<br />내용2<br />
+                                        내용2<br />내용2<br />내용2<br />내용2<br />내용2<br />
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="terms">
+                                <div id="termsTitle">
+                                    <h5>E-mail 및 SMS 광고성 정보 수신 동의
+                                        <span style="color: yellow;">(선택)</span>
+                                        <input type="checkbox">
+                                    </h5>
+                                </div>
+                                <h5>다양한 교육 정보와 신규 이벤트를 알려 드립니다.</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" id="agreeBtn">
+                        <div id="agreeText">동의하고 넘어가기</div>
+                    </button>
+                    <button type="button" id="agreeBtn">
+                        <div id="agreeText" onclick="history.back(-1);">뒤로가기</div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--Join_terms end-->
+
+{% include "./layout/bottom.html" %}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>category_list</title>
+        <link rel="stylesheet" href="/css/admin_category_list.css">
+        <script type = "text/javascript" src= "/js/admin_category_list.js"></script>
+    </head>
+    
+    <body>
+        <div id="wrap">
+            {% include "../layout/admin_top.html" %}
+        <!--category_list start-->
+        <div id="content">
+            <div id="listLayer">
+                <div id="listPage">
+                    <h2>카테고리 List</h2>
+                    <div id="searchBox">
+                        <form>
+                            <div id="btnGroup">
+                                <input type="checkbox" id="selAll"><span>전체 선택</span>
+                                <button type="button" id="addBtn">새 카테고리 작성</button>
+                                <button type="button" id="delBtn">선택 삭제</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="listBox">
+                        <form id = "selDel" method="POST" action="/admin/category/delete">
+                            <table>
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="70%">
+                                    <col width="5%">
+                                    <col width="5%">
+                                    <col width="5%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>카테고리명</th>
+                                        <th>보임/숨김</th>
+                                        <th>수정</th>
+                                        <th>삭제</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in cateList %}
+                                    <tr>
+                                        <td>
+                                            <input class = "selOpt" type="checkbox" name = "selDelItems" value = {{item.id}}>
+                                            {{item.num}}
+                                        </td>
+                                        <td>
+                                            <a href="http://localhost:3000/admin/category/view?id={{item.id}}">
+                                            <span>{{item.subject}}</span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {% if item.show == true %}
+                                            보임
+                                            {% elif item.show == false %}
+                                            숨김
+                                            {% else %}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <button type="button" onclick="location.href='http://localhost:3000/admin/category/modify?id={{item.id}}'">수정</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="delEach" onclick="location.href='http://localhost:3000/admin/category/delete?id={{item.id}}'">삭제</button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    
+                    <div id="pageBtn">
+                        <button type="button" onclick="location.href='/admin/category/?id=1'">&lt;&lt;</button>
+                        <button type="button" onclick="location.href='/admin/category/?id={{prevBlock}}'">&lt;</button>
+                        {% for item in block_arr %}
+                            {% if page==item %}
+                            <button type="button" id = "pageNum" style="color:dodgerblue;"  onclick="location.href='/admin/category/?id={{item}}'">{{item}}</button>
+                            {% else %}
+                            <button type="button" id = "pageNum"  onclick="location.href='/admin/category/?id={{item}}'">{{item}}</button>
+                            {% endif %}
+                        {% endfor %}
+                        <button type="button" onclick="location.href='/admin/category/?id={{nextBlock}}'">&gt;</button>
+                        <button type="button" onclick="location.href='/admin/category/?id={{total_page}}'">&gt;&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--category_list end-->
+    </div>    
+</div>
+</body>
+</html>

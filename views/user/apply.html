@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apply</title>
+    <script type="text/javascript" src="/js/apply.js"></script>
+    <link rel="stylesheet" href="/css/apply.css">
+</head>
+
+<body>
+{% include "../layout/top.html" %}
+
+    <!--apply_list start-->
+    <div id="applyLayer">
+        <div id="applyPage">
+            <div id="applyBox">
+                <h1>지원하기</h1>
+                <div id="content">
+                    <h3>상담정보</h3>
+                    <form id="applyInfo" method="post" action="/apply/submit">
+                        <ul>
+                            <li>교육과정</li>
+                            <li>
+                                <select id="curr_id" name="curr_id" required>
+                                    <option value="">선택</option>
+                                    {% for item in currList %}
+                                    <option value="{{item.id}}">{{item.subject}}</option>
+                                    {% endfor %}
+                                </select>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>이름</li>
+                            <li>
+                                <input id="username" name="username" type="text" required>
+                                <p id="username_msg"></p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>성별</li>
+                            <li>
+                                <input id="gender" type="radio" name="gender" value="1" required>남
+                                <input id="gender" type="radio" name="gender" value="0" required>여</label>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>나이</li>
+                            <li>
+                                <input id="userage" name="userage" type="text" required>세
+                                <p id="userage_msg"></p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>이메일</li>
+                            <li>
+                                <input id="useremail" name="useremail" type="text" required>
+                                <p id="useremail_msg"></p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>휴대폰번호</li>
+                            <li>
+                                <input id="userphone" name="userphone" type="text" required>
+                                <p id="userphone_msg"></p>
+                            </li>
+                        </ul>
+                        <ul style="width: 100%; height: 200px;">
+                            <li>지원동기</li>
+                            <li>
+                                <textarea id="motive" name="content" required></textarea>
+                            </li>
+                        </ul>
+
+                        <div id="space" style="height: 50px;"></div>
+                        <h3>개인정보 취급방침</h3>
+                        <div id="privacy">
+                            <p>가. 수집하는 개인정보 항목 및 수집방법</p>
+                            <p>나. 개인정보의 수집 및 이용목적</p>
+                            <p>다. 수집한 개인정보의 보유 및 이용기간</p>
+                            <div id="space" style="height: 20px;"></div>
+                            <p>가. 수집하는 개인정보 항목 및 수집방법</p>
+                            <p>본원은 고객님의 온라인 상담을 위해 개인정보를 아래와 같이 수집하고 있습니다.</p>
+                            <p>· 아이디, 이름, 성별, 나이, 이메일, 전화번호 등</p>
+                            <p>본원은 다음과 같은 방법으로 개인정보를 수집합니다.</p>
+                            <p>· 상담 게시판에 상담 신청 게시글 등록</p>
+                            <div id="space" style="height: 10px;"></div>
+                            <p>나. 개인정보의 수집 및 이용목적</p>
+                            <p>본 학원은 수집한 개인정보를 다음의 목적을 위해 활용합니다.</p>
+                            <p>· 과정문의에 대한 학과담당자들의 전화 및 이메일상담</p>
+                            <p>· 신규 서비스(강좌) 개발 및 특화, 이벤트 등 광고성 정보 전달</p>
+                            <div id="space" style="height: 10px;"></div>
+                            <p>다. 수집한 개인정보의 보유 및 이용기간</p>
+                            <p>원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당정보를 지체 없이 파기합니다.</p>
+                        </div>
+                        <div id="btnGroup_right">
+                            <input type="radio" id="agree" name="agree" value="1" required><span>동의합니다.</span>
+                            <input type="radio" id="agree" name="agree" value="0" required><span>동의하지않습니다.</span>
+                        </div>
+                        <div id="btnGroup_center">
+                            <button type="submit" id="submit">상담신청하기</button>
+                            <button type="button" onclick="'http://localhost:3000/'">메인으로</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--apply_list end-->
+
+{% include "../layout/bottom.html" %}

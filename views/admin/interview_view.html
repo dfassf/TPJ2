@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>interview_view</title>
+    <link rel="stylesheet" href="/css/admin_interview_view.css">
+</head>
+
+<body>
+    <div id="wrap">
+        {% include "../layout/admin_top.html" %}
+
+        <!--interview_view start-->
+        <div id="content">
+            <div id="listLayer">
+                <div id="listPage">
+                    <h2>취업자인터뷰 View</h2>
+                    <div id="listBox">
+                        {% for item in interviewList %}
+                        <table>
+                            <colgroup>
+                                <col width="10%">
+                                <col width="90%">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>작성자</th>
+                                    <td>최고관리자</td>
+                                </tr>
+                                <tr>
+                                    <th>교육과정명</th>
+                                    <td>{{item.subject}}</td>
+                                </tr>
+                                <tr>
+                                    <th>이름</th>
+                                    <td>{{item.username}}</td>
+                                </tr>
+                                <tr>
+                                    <th>내용</th>
+                                    <td>
+                                        <p>{{item.content}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>보임/숨김 설정</th>
+                                    <td>
+                                        {% if item.show == true%}
+                                        보임
+                                        {% else %}
+                                        숨김
+                                        {% endif%}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <button type="button"
+                                onclick="location.href='http://localhost:3000/admin/interview/modify?id={{item.id}}'">수정하기</button>
+                            <button type="button"
+                                onclick="location.href='http://localhost:3000/admin/interview/'">목록으로</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--interview_view end-->
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!-- body 바로 밑에 삽입 -->
+
+<!-- css -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+        div{
+            display: block;
+        }
+        li, ol, ul {
+            list-style: none;
+        }
+        a{
+            text-decoration:none;
+            box-sizing: inherit;
+        }
+
+        /* header */
+        #header {
+            padding: 20px 0px;
+            text-align: center;
+            background: darkgrey;
+            border: 1px solid #000;
+        }
+        #header > #loginBtn > a{
+            display: block;
+            position: absolute;
+            padding: 5px;
+            top: 24px;
+            right: 50px;
+            font-size: 20px;
+            color: #000;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            background:#fff;
+        }
+        #header > #loginBtn > a:hover{
+            color: #fff;
+            background: #000;
+            transition: 0.25s;
+        }
+
+        /* container */
+        #container{
+            width: 190px;
+        }
+
+        /* sidebar */
+        #sidebar{
+            width: 190px;
+        }
+        #sidebar > #menu{
+            border: 1px solid #000;
+            border-top: none;
+            background: whitesmoke;
+            cursor: pointer;
+        }
+        #sidebar > #menu > #menu_text > a{
+            color: #000;
+        }
+        #sidebar > #menu > #menu_text > a > h4{
+            font-size: 20px;
+            padding: 10px;
+        }
+        #sidebar > #menu > #menu_text > a > h4:hover{
+            color: maroon;
+        }
+        #sidebar > #menu > #menu_text > a > h4 > span{
+            float: right;
+        }
+        #sidebar > #menu > #menuSub{
+            display: block;
+            padding: 5px 10px;
+            border-top: 1px solid #000;
+            background: wheat;
+        }
+        #sidebar > #menu > #menuSub > a > h5{
+            font-size: 17px;
+            color: #000;
+            cursor: pointer;
+        }
+        #sidebar > #menu > #menuSub > a > h5:hover{
+            color: indianred;
+        }
+        
+        /* content */
+        #content {
+            position: absolute;
+            top: 85px;
+            left: 190px;
+        }
+
+        /* listLayer */
+        #listLayer {
+            width: 1700px;
+            float: left;
+        }
+        #listLayer > #listPage{
+            padding: 50px 50px;
+        }
+        #listLayer > #listPage > h2{
+            padding: 20px 30px;
+            background: steelblue;
+            border-radius: 5px;
+        }
+
+        /* listLyaer > pageBtn */
+        #listLayer > #listPage > #pageBtn{
+            margin-top: 50px;
+            text-align: center;
+        }
+        #listLayer > #listPage > #pageBtn > button{
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 18px;
+            color: #000;
+            border: 1px solid #c7c7c7;
+            cursor: pointer;
+        }
+        #listLayer > #listPage > #pageBtn > button:hover{
+            border: 1px solid dodgerblue;
+            color: dodgerblue;
+            transition: 0.5s;
+        }
+    </style>
+
+<!-- html -->
+    <!-- layout admin_top start -->
+    <div id="header">
+        <h1>관리자 페이지</h1>
+        <div id="loginBtn">
+            <a class="logoutBtn">로그아웃</a>
+        </div>
+    </div>
+
+    
+    <div id="sidebar">
+        <div id="menu">
+            <div id="menu_text">
+                <a href="http://localhost:3000/admin/curr"><h4>교육과정</h4></a>
+            </div>
+        </div>
+        <div id="menu">
+            <div id="menu_text">
+                <a href="http://localhost:3000/admin/category"><h4>카테고리</h4></a>
+            </div>
+        </div>
+        <div id="menu">
+            <div id="menu_text">
+                <a href="http://localhost:3000/admin/interview"><h4>취업자인터뷰</h4></a>
+            </div>
+        </div>
+        <div id="menu">
+            <div id="menu_text" class="mo1">
+                <a><h4>알림 및 질문<span> ▽</span></h4></a>
+            </div>
+            <div id="menuSub" class="mo1_1"><a href="http://localhost:3000/admin/notice"><h5>공지사항</h5</a></div>
+            <div id="menuSub" class="mo1_2"><a href="http://localhost:3000/admin/faq"><h5>FAQ</h5</a></div>
+        </div>
+        <div id="menu">
+            <div id="menu_text" class="mo2">
+                <a><h4>지원서<span> ▽</span></h4></a>
+            </div>
+            <div id="menuSub" class="mo2_1"><a href="http://localhost:3000/admin/apply"><h5>지원하기</h5</a></div>
+            <div id="menuSub" class="mo2_2"><a href="http://localhost:3000/admin/review"><h5>수강후기</h5</a></div>
+        </div>
+        <div id="menu">
+            <div id="menu_text">
+                <a href="http://localhost:3000/admin/user"><h4>회원관리</h4></a>
+            </div>
+        </div>
+        <div id="menu">
+            <div id="menu_text">
+                <a href="###"><h4>1:1 상담</h4></a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script type = "text/javascript">
+        const logoutBtn = document.querySelector('.logoutBtn')
+        logoutBtn.addEventListener('click',async function(){
+
+            alert('로그아웃 되셨습니다.')
+            console.log('this')
+            let admLogOut = await axios.post('http://localhost:3000/auth/local/logout',{
+                ifAdmin: true
+            })
+            location.href="http://localhost:3000/admin/"
+            
+        })
+    </script>
+    <!-- layout admin_top end -->

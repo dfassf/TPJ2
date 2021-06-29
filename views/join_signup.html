@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>join_signup</title>
+    <script type="text/javascript" src="/js/join_signup.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/join.css">
+</head>
+
+<body>
+{% include "./layout/top.html" %}
+
+    <!--join_signup start-->
+    <div id="joinLayer">
+        <div id="joinPage">
+            <form id="join_form" method="POST" action="/user/join_success">
+                <div id="joinBox">
+                    <h2>회원가입</h2>
+                    <div id="joinContent">
+                        <div id="joinImageBox">
+                            <div id="joinImage">
+                                <img src="/images/character.png">
+                            </div>
+                        </div>
+                        <h5>회원정보 입력 단계입니다.</h5>
+                        <div id="inputbox">
+                            <h5 style="width: 550px;">아이디</h5>
+                            <input id="signup_userid" name="userid" type="text"
+                                placeholder="아이디 (5~20자의 영문 소문자, 숫자만 사용 가능합니다.)" required>
+                            <p id="userid_msg1"></p>
+                        </div>
+                        <div id="inputbox">
+                            <h5 style="width: 550px;">비밀번호</h5>
+                            <input id="signup_userpw" name="userpw" type="password"
+                                placeholder="비밀번호 (우측 아이콘을 클릭하여 설정 시 주의사항을 확인해주세요.)" required>
+                            <div id="clickInfo" class="infoOpenBtn0"></div>
+                            <p id="userpw_msg2"></p>
+                            <div id="infoBox" class="infoBox0">
+                                <h3>비밀번호 설정 시 주의사항</h3>
+                                <p>· 8~16글자, 영문 대소문자, 최소 1개의 숫자와 특수문자가 포함되어야 합니다.</p>
+                                <p>· 사용 가능한 특수문자 - _ ` ~ ! @ # $ % ^ & *</p>
+                                <p>· 사용하실 아이디는 비밀번호에 적용이 불가합니다.</p>
+                                <p>· 영문, 숫자, 특수문자를 혼용하시면 보다 안전한 비밀번호를 만들 수 있습니다.</p>
+                                <div id="infoBox_close" class="infoCloseBtn0">
+                                    <h5>닫기</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="inputbox" style="border: none;">
+                            <h5 style="width: 550px;">비밀번호 확인</h5>
+                            <input id="signup_userpw_check" name="userpw_check" type="password" placeholder="비밀번호 확인"
+                                required>
+                            <p id="userpw_msg3"></p>
+                        </div>
+                    </div>
+                    <div id="space" style="height: 30px;"></div>
+                    <div id="joinContent">
+                        <div id="inputTitle">
+                            <h5 style="width: 550px;">이름 / 성별 <span>(필수)</span></h5>
+                            <input id="username" name="username" type="text" placeholder="이름 (한글만 사용 가능합니다.)"
+                                style="width: 298px;" required>
+                            <label id="inputRadio"><input type="radio" name="gender" value="1" checked><span
+                                    style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">남</span></label>
+                            <label id="inputRadio" style="margin-left: -6px;"><input type="radio" name="gender"
+                                    value="0"><span
+                                    style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">여</span></label>
+                            <p id="username_msg"></p>
+                        </div>
+                        <div id="inputTitle">
+                            <h5 style="width: 160px;">휴대폰 번호 <span>(필수)</span></h5>
+                            <div id="clickInfo" class="infoOpenBtn1"></div>
+                            <input id="userphone" name="userphone" type="text" placeholder="휴대폰 (- 포함하여 숫자만 입력해주세요.)"
+                                required>
+                            <p id="userphone_msg"></p>
+                            <div id="infoBox" class="infoBox1">
+                                <h3>휴대폰 번호 입력 안내</h3>
+                                <p>· 문의 답변에 대한 알림과 강의 신청 내역이 담긴 SMS/MMS가 발송됩니다.</p>
+                                <p>· 주요 공지사항 및 이벤트 당첨 안내 등은 수신 동의 여부에 관계 없이 발송됩니다.</p>
+                                <div id="infoBox_close" class="infoCloseBtn1">
+                                    <h5>닫기</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="inputTitle" style="border-bottom: none;">
+                            <h5>이메일 <span style="color: yellow;">(선택)</span></h5>
+                            <div id="clickInfo" class="infoOpenBtn2"></div>
+                            <input id="useremail" name="useremail" type="text" placeholder="이메일">
+                            <p id="useremail_msg"></p>
+                            <div id="infoBox" class="infoBox2">
+                                <h3>이메일 입력 안내</h3>
+                                <p>· 새로운 서비스, 커리큘럼이나 이벤트 등 최신 정보를 이메일로 미리 받아 보실 수 있습니다.</p>
+                                <p>· 주요 공지사항 및 이벤트 당첨 안내 등은 수신 동의 여부에 관계 없이 발송됩니다.</p>
+                                <div id="infoBox_close" class="infoCloseBtn2">
+                                    <h5>닫기</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" id="agreeBtn">
+                        <div id="agreeText">가입하기</div>
+                    </button>
+                    <button type="button" id="agreeBtn">
+                        <div id="agreeText" onclick="history.back(-1);">뒤로가기</div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--join_signup end-->
+
+{% include "./layout/bottom.html" %}

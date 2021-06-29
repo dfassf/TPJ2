@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>curriculum_view</title>
+    <link rel="stylesheet" href="/css/admin_curr_view.css">
+    {% include '../logincheck.html' %}
+</head>
+
+<body>
+    <div id="wrap">
+        {% include "../layout/admin_top.html" %}
+
+        <!--curriculum_view start-->
+        <div id="content">
+            <div id="listLayer">
+                <div id="listPage">
+                    <h2>교육과정 View</h2>
+                    <div id="listBox">
+                        <table>
+                            <colgroup>
+                                <col width="10%">
+                                <col width="90%">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>작성자</th>
+                                    <td>최고관리자</td>
+                                    <input type="text" name="asdf" value="{{result.id}}" style="display:none">
+                                </tr>
+                                <tr>
+                                    <th>등록일</th>
+                                    <td>{{registeredDate}}</td>
+                                </tr>
+                                <tr>
+                                    <th>진행여부</th>
+                                    <td>
+                                        {% if result.recruit == true%}
+                                        현재 모집 중
+                                        {% else %}
+                                        모집 마감
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>교육과정명</th>
+                                    <td>{{result.subject}}</td>
+                                </tr>
+                                <tr>
+                                    <th>교육시작일</th>
+                                    <td>{{startDate}}</td>
+                                </tr>
+                                <tr>
+                                    <th>교육종료일</th>
+                                    <td>{{endDate}}</td>
+                                </tr>
+                                <tr>
+                                    <th>내용</th>
+                                    <td>
+                                        <p>{{result.content}}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>보임/숨김 설정</th>
+                                    <td>
+                                        {% if result.show == true%}
+                                        보임
+                                        {% else %}
+                                        숨김
+                                        {% endif%}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <button type="button"
+                                onclick="location.href='http://localhost:3000/admin/curr/modify?id={{result.id}}'">수정하기</button>
+                            <button type="button"
+                                onclick="location.href='http://localhost:3000/admin/curr/'">목록으로</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--curriculum_view end-->
+        
+    </div>
+</body>
+
+</html>

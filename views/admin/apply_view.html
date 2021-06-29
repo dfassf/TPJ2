@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apply_view</title>
+    <link rel="stylesheet" href="/css/admin_interview_view.css">
+</head>
+
+<body>
+    <div id="wrap">
+        {% include "../layout/admin_top.html" %}
+        
+        <!--apply_view start-->
+        <div id="content">
+            <div id="listLayer">
+                <div id="listPage">
+                    <h2>지원하기 View</h2>
+                    <div id="listBox">
+                        {% for item in applyList %}
+                        <table>
+                            <colgroup>
+                                <col width="10%">
+                                <col width="90%">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>교육과정명</th>
+                                    <td>{{item.subject}}</td>
+                                </tr>
+                                <tr>
+                                    <th>신청일</th>
+                                    <td>{{item.date}}</td>
+                                </tr>
+                                <tr>
+                                    <th>신청자명</th>
+                                    <td>{{item.username}}</td>
+                                </tr>
+                                <tr>
+                                    <th>성별</th>
+                                    <td>{{item.gender}}</td>
+                                </tr>
+                                <tr>
+                                    <th>이메일</th>
+                                    <td>{{item.useremail}}</td>
+                                </tr>
+                                <tr>
+                                    <th>연락처</th>
+                                    <td>{{item.userphone}}</td>
+                                </tr>
+                                <tr>
+                                    <th>지원동기</th>
+                                    <td>
+                                        <p>{{item.content}}</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <button type="button"
+                                onclick="location.href='http://localhost:3000/admin/apply/'">목록으로</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--apply_view end-->
+
+    </div>
+</body>
+
+</html>

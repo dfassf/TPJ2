@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password check</title>
+    <script type="text/javascript" src="/js/review_pwchk.js"></script>
+    <link rel="stylesheet" href="/css/review_pwchk.css">
+</head>
+
+<body>
+{% include "../layout/top.html" %}
+
+    <!--review_delete start-->
+    <div id="boardLayer">
+        <div id="boardPage">
+            <div id="boardBox">
+                <h1>수강후기</h1>
+                <div id="content">
+                    <div id="space" style="height: 35px;"></div>
+                    <form id="pwd" method="post" action="/review/pwchk">
+                        <div id="boardOuter">
+                            <table id="board">
+                                <tbody>
+                                    <tr>
+                                        <th>글 비밀번호</th>
+                                        {% if forMod == true %}
+                                        <input type="hidden" style="display:none" id="modOrDel" value="0">
+                                        {% elif forMod == false%}
+                                        <input type="hidden" style="display:none" id="modOrDel" value="1">
+                                        {% else %}
+                                        <input type="hidden" style="display:none" id="modOrDel" value="2">
+                                        {% endif %}
+                                        <td>
+                                            <input type="password" id="pwInput" name="pwd2">
+                                            <input type="hidden" style="display:none" id="postidbox" name="postid" value="{{postid}}">
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="btnGroup_center">
+                            <button type="button" id="pwSubmit">확인</button>
+                            <button type="button" id="backBtn"
+                                onclick="location.href='http://localhost:3000/review/view?id={{postid}}'">취소</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--review_delete end-->
+
+{% include "../layout/bottom.html" %}

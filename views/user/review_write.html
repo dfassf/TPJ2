@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>review_write</title>
+    <script type="text/javascript" src="/js/review_write.js"></script>
+    <link rel="stylesheet" href="/css/board_write.css">
+</head>
+{% include "../logincheck.html" %}
+
+<body>
+{% include "../layout/top.html" %}
+
+    <!--review_write start-->
+    <div id="boardLayer">
+        <div id="boardPage">
+            <div id="boardBox">
+                <h1>수강후기</h1>
+                <div id="content">
+                    <div id="space" style="height: 35px;"></div>
+                    <form id="write" method="post" action="/review/write_success">
+                        <div id="boardOuter">
+                            <table id="board">
+                                <tbody>
+                                    <tr>
+                                        <th style="border-top: none;">제목</th>
+                                        <td style="border-top: none;">
+                                            <input type="text" id="usertitle_input" name="title" required>
+                                            <p id="usertitle_msg"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>작성자</th>
+                                        <td>
+                                            {% if signedinId==undefined %}
+                                            <input type="text" id="useruserid_input" name="userid" value="" required>
+                                            {% elif ifMod == 1 %}
+                                            <input type="text" id="useruserid_input" name="userid" value="최고관리자" readonly>
+                                            {% else %}
+                                            <input type="text" id="useruserid_input" name="userid" value="{{signedinId}}" readonly>
+                                            {% endif %}
+                                            <p id="userid_msg"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>{% if signedinId==undefined %}
+                                        <th>글 비밀번호</th>
+                                        <td>
+                                            
+                                            <input type="password" id="userpw_input" name="postpw" required>
+                                            
+                                            <p id="userpw_msg"></p>
+                                          
+                                        </td>
+                                    </tr>  {% endif %}
+                                    <tr>
+                                        <th>교육과정</th>
+                                        <td>
+                                            <select name="curr_id">
+                                                {% for item in selectedCurr %}
+                                                <option value="{{item.id}}">{{item.subject}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>첨부파일</th>
+                                        <td>
+                                            <input type="file" name="img">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>내용</th>
+                                        <td>
+                                            <textarea id="text" name="content" required></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="btnGroup_center">
+                            <button type="submit">작성완료</button>
+                            <button type="button" onclick="location.href='http://localhost:3000/review/'">취소</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--review_write end-->
+
+{% include "../layout/bottom.html" %}

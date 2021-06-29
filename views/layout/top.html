@@ -1,0 +1,486 @@
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            user-select: none;
+        }
+        div{
+            display: block;
+        }
+        ul,li{
+            list-style:none;
+        }
+        a{
+            text-decoration:none;
+            box-sizing: inherit;
+        }
+        textarea{
+            resize: none;
+        }
+        body{
+            background: #000;
+        }
+
+        /*header*/
+        .header{
+            position: fixed;
+            width: 100vw;
+            top: 0;
+            margin-bottom: 72px;
+            box-sizing: border-box;
+            background: #000;
+            z-index: 1;
+        }
+
+        /*cube*/
+        .scene {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            margin-top: 50px;
+            margin-left: 200px;
+            perspective: 1000px;
+            z-index: 5;
+        }
+        .cube { 
+            position: relative;
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            transform: translateZ(-100px);
+            animation: rotation 5.5s infinite;
+        }
+        .cube__face {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            color: #fff;
+            font-size: 2.5em;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .blackline>li{
+            width: 10px;
+            height: 10px;
+            border: 1px solid gray;
+            box-sizing: border-box;
+            float: left;
+        }
+        .cube__face--back {
+            background: rgba(231, 228, 211, 0.7);
+            transform: rotateY(180deg) translateZ(70px);
+        }
+        
+        .cube__face--right {
+            background: rgba(241, 239, 226, 0.7);
+            transform: rotateY(90deg) translateZ(70px);
+        }
+        
+        .cube__face--left {
+            background: rgba(187, 217, 238, 0.7);
+            transform: rotateY(-90deg) translateZ(70px);
+        }
+        
+        .cube__face--top {
+            background:rgba(235, 244, 250, 0.7);
+            transform: rotateX(90deg) translateZ(70px);
+        }
+        
+        .cube__face--bottom {
+            background: rgba(192, 192, 192, 0.7);
+            transform: rotateX(-90deg) translateZ(70px);
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        @keyframes rotation {
+            0% {
+            transform: translateZ(-100px) rotate3d(0,0,0);
+            }
+            100% {
+            transform: translateZ(-100px) rotate3d(1,0,1,360deg);
+            }
+        }
+        .logo {
+            width: 5vw;
+            height: 3vw;
+            float: left;
+        }
+        .logo > a > img {
+            display: block;
+            width: 5vw;
+            height: 3vw;
+            padding-left: 100px;
+        }
+        .header_menu {
+            float: right;
+            padding: 1vw 0;
+            box-sizing: border-box;
+        }
+        .header_menu > a {
+            color: white;
+            font-size: 20px;
+            padding: 16px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .menubtn:hover{
+            background: #fff;
+            color:#000;
+            animation: btn1 0.5s ;
+            animation-fill-mode: forwards;
+        }
+        .logout{
+            position: absolute;
+            top:0;
+            right: 380px;
+            z-index: 100;
+            width: auto;
+            height: 59px;
+            color: white;
+            font-size: 20px;
+            padding: 16px;
+            margin-top: 4px;
+            box-sizing: border-box;
+        }
+        .logout:hover{
+            background: #fff;
+            color:#000;
+            animation: btn1 0.5s ;
+            animation-fill-mode: forwards;
+            cursor: pointer;
+        }
+        .logbtn{
+            position: absolute;
+            top:0;
+            right: 120px;
+            z-index: 100;
+            width: auto;
+            height: 59px;
+            color: white;
+            font-size: 20px;
+            margin-top: 4px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+        .logbtn:hover{
+            background: #fff;
+            color:#000;
+            animation: btn1 0.5s ;
+            animation-fill-mode: forwards;
+        }
+        @keyframes btn1{
+            from {
+                background:none;
+                color:#fff;
+            }
+            to {
+                background: #fff;
+                color: black;
+            }
+        }
+        .hide_menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            width: 100%;
+            font-size: 20px;
+            overflow: hidden;
+        }
+        .hide_menu:hover {
+            display: block;
+        }
+        .header_menu:hover + .hide_menu {
+            display: block;
+            animation: slide1 0.5s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes slide1 {
+            from {
+                height: 0;
+            }
+            to {
+                height: 3.3vw;
+            }
+        }
+        .hide_menu1 {
+            float: left;
+            margin-right: 2.5%;
+            margin-left: 1480px;
+            box-sizing: border-box;
+        }
+        .hide_menu1 > li {
+            box-sizing: border-box;
+            margin: 6px 0;
+        }
+        .hide_menu1 > li > a {
+            color: white;
+        }
+        .hide_menu2 {
+            float: left;
+            text-align: center;
+            margin-left: 20px;
+        }
+        .hide_menu2 > li {
+            box-sizing: border-box;
+            margin: 6px 0;
+        }
+        .hide_menu2 > li > a {
+            color: white;
+        }
+        .log_menu{
+            display: none;
+            position: absolute;
+            right: 120px;
+            top: 59px;
+            width: 233.89px;
+            height: 3.3vw;
+            padding: 10px;
+            color: white;
+            z-index: 2;
+            box-sizing: border-box;
+            border: 1px solid white;
+            text-align: center;
+            line-height: 40px;
+            font-size: 20px;
+            overflow: hidden;
+        }
+        .log_menu>a{
+            color: white;
+        }
+        .logbtn:hover + .log_menu{
+            display: block;
+            animation: slide1 0.5s;
+            animation-fill-mode: forwards;
+        }
+        .log_menu:hover{
+            display: block;
+            animation: color1 0.5s;
+            animation-fill-mode: forwards;
+        }
+        .log_menu:hover>a{
+            animation: color1 0.5s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes color1 {
+            0% {
+                background: none;
+            color: white;
+            }
+            100% {
+                background:white;
+                color: black;
+            }
+        }
+
+        /* login */
+        #loginLayer{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #000000a6;
+            z-index: 99;
+        }
+        #loginLayer.show{
+            display: block;
+        }
+        #loginLayer > #loginPopup{
+            width: 500px;
+            margin: 0 auto;
+            padding: 50px 0px;
+            color: #fff;
+            text-align: center;
+            border: 1px solid rgb(0, 143, 190);
+            background: #fff;
+        }
+        #loginLayer > #loginPopup > #loginForm > h2{
+            margin-bottom: 40px;
+            font-size: 30px;
+            color: #222;
+        }
+        #loginLayer > #loginPopup > #loginForm > input{
+            width: 378px;
+            height: 18px;
+            margin-top: 10px;
+            padding: 10px;
+            color: #000;
+            background: #fff;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid gray;
+        }
+        #loginLayer > #loginPopup > #loginForm > input:hover{
+            border: 1px solid lightyellow;
+            transition: 0.5s;
+        }
+        #loginLayer > #loginPopup > #loginForm > button{
+            width: 400px;
+            height: 48px;
+            margin: 30px 0px;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            color: lightyellow;
+            background: #333;
+            cursor: pointer;
+        }
+        #loginLayer > #loginPopup > #loginForm > button:hover{
+            border: 1px solid ;
+            filter: brightness(150%);
+            transition: 0.75s;
+        }
+        #loginLayer > #loginPopup > #loginForm > #or{
+            width: 400px;
+            margin: 0 auto;
+        }
+        #loginLayer > #loginPopup > #loginForm > #or > #line{
+            width: 170px;
+            float: left;
+            border-top: 1px solid lightgray;
+        }
+        #loginLayer > #loginPopup > #loginForm > #or > #or_text{
+            position: absolute;
+            margin-left: 184px;
+            top: 530px;
+        }
+        #loginLayer > #loginPopup > #loginForm > #or > #or_text > h3{
+            font-size: 15px;
+            color: lightgray;
+        }
+        #loginLayer > #loginPopup > #loginForm > h3{
+            width: 200px;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        #loginLayer > #loginPopup > #loginForm > h3 > a{
+            color: lightslategray;
+        }
+        #loginLayer > #loginPopup > #loginForm > h3 > a:hover{
+            text-decoration: underline;
+            transition: 0.5s;
+        }
+
+        /*footer*/
+        #footer_wrap{
+            width: 100%;
+            background: #000;
+        }
+        .footer{
+            border-top: 1px solid #fff;
+            color: #fff;
+            padding-left: 350px;
+        }
+        .footer_menu{
+            float: left;
+            padding: 20px 50px;
+            box-sizing: border-box;
+        }
+        .string_bold{
+            font-weight: bold;
+        }
+        .footer_menu>img{
+            margin-left: 30px;
+        }
+    </style>
+
+    <!--login start-->
+    <div id="loginLayer">
+        <div id="loginPopup" style="margin-top: 200px;">
+            <div id="loginForm">
+                <h2>로그인</h2>
+                <input id="userid" type="text" placeholder="아이디">
+                <input id="userpw" type="password" placeholder="비밀번호">
+                <button id="login" class="loginSubmit">로그인</button>
+                <div id="or">
+                    <div id="line"></div>
+                    <div id="or_text"><h3>또는</h3></div>
+                    <div id="line" style="float: right;"></div>
+                </div>
+                <h3 style="margin-top: 30px;"><a href="#">회원 가입<a></h3>
+                <h3><a href="#">채팅 문의<a></h3>
+            </div>
+        </div>
+    </div>
+    <!--login end-->
+
+    <!--header start-->
+    <div class="header">
+        <a href="###">
+            <div class="scene">
+                <div class="cube">
+                    <div class="cube__face cube__face--back"><ul class="blackline"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div>
+                    <div class="cube__face cube__face--right"><ul class="blackline"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div>
+                    <div class="cube__face cube__face--left"><ul class="blackline"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div>
+                    <div class="cube__face cube__face--top"><ul class="blackline"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div>
+                    <div class="cube__face cube__face--bottom"><ul class="blackline"><li></li><li></li><li><li></li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div>
+                </div>
+            </div>
+        </a>
+        <div class="logo">
+            <a href="###"></a>
+        </div>
+        <div class="header_menu mobile">
+            <a href="http://localhost:3000/introduce" class="menubtn">학원소개</a>
+            <a href="http://localhost:3000/curriculum" class="menubtn">교육과정</a>
+            <a href="http://localhost:3000/interview" class="menubtn">취업자인터뷰</a>
+            <a class="menubtn">알림 및 질문</a>
+            <a class="menubtn">지원서</a>
+            {% if isLogin == true %}
+            <a class="menubtn logoutBtn">로그아웃</a>
+            <a href="http://localhost:3000/user/info" class="menubtn">회원정보</a>
+            <script type = "text/javascript">
+                const logoutBtn = document.querySelector('.logoutBtn')
+                logoutBtn.addEventListener('click',async function(){
+                    let srcPath = document.querySelector('#srcPath')
+                    srcPath.value=`${location.pathname}${location.search}`;
+                    console.log(srcPath.value)
+                    alert('로그아웃 되셨습니다.')
+                    console.log('this')
+                    let userLogOut = await axios.post('http://localhost:3000/auth/local/logout',{
+                        srcPath: srcPath.value,
+                    })
+                    console.log('this')
+                    location.reload()
+                    console.log('this')
+                })
+            </script>
+            {% else %}
+            <a id="loginBtn" class="menubtn">로그인</a>
+            <a href="http://localhost:3000/user/join_terms" class="menubtn">회원가입</a>
+            {% endif %}
+        </div>
+        <div id="bush" class="hide_menu">
+            <div class="hide_menu1">
+                <li>
+                    <a href="http://localhost:3000/notice" class="menubtn">공지사항</a>
+                </li>
+                <li>
+                    <a href="http://localhost:3000/faq" class="menubtn">FAQ</a>
+                </li>
+            </div>
+            <div class="hide_menu2">
+                <li>
+                    <a href="http://localhost:3000/apply" class="menubtn">지원하기</a>
+                </li>
+                <li>
+                    <a href="http://localhost:3000/review" class="menubtn">수강후기</a>
+                </li>
+            </div>
+        </div>
+    </div>
+    <!--header end-->

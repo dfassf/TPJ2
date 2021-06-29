@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    color: #fff;
+}
+div{
+    display: block;
+}
+li, ol, ul {
+    list-style: none;
+}
+a{
+    text-decoration:none;
+    box-sizing: inherit;
+}
+body{
+    background: rgb(54, 63, 73);
+}
+
+/* loginLayer */
+#loginLayer{
+    width: 30%;
+    height: 500px;
+    margin: 200px auto;
+}
+#loginLayer > #loginPage{
+    width: 100%;
+    height: 100%;
+}
+#loginLayer > #loginPage > h1{
+    padding: 20px 0px;
+    text-align: center;
+}
+#loginLayer > #loginPage > #loginBox{
+    padding: 20px;
+    background: rgb(99, 114, 129);
+    border-radius: 5px;
+}
+#loginLayer > #loginPage > #loginBox > #textBox{
+    width: 100%;
+    margin-left: 5px;
+    padding-bottom: 10px;
+}
+#loginLayer > #loginPage > #loginBox > #textBox > h3{
+    font-size: 18px;
+}
+#loginLayer > #loginPage > #loginBox > #textBox > h3 > span{
+    margin-left: 5px;
+    font-size: 17px;
+    line-height: 10px;
+}
+#loginLayer > #loginPage > #loginBox > form > #inputBox{
+    text-align: center;
+    padding-bottom: 10px;
+}
+#loginLayer > #loginPage > #loginBox > form > #inputBox > input{
+    width: 95%;
+    padding: 15px 10px;
+    margin: 10px 0px;
+    color: #fff;
+    border: 1px solid rgb(72, 84, 99);
+    border-radius: 5px;
+    background: rgb(72, 84, 99);
+}
+#loginLayer > #loginPage > #loginBox > form > #inputBox > input:hover{
+    border: 1px solid lightyellow;
+    transition: 0.5s;
+}
+#loginLayer > #loginPage > #loginBox > form > #buttonBox{
+    display: inline-block;
+    width: 100%;
+}
+#loginLayer > #loginPage > #loginBox > form > #buttonBox > p{
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+#loginLayer > #loginPage > #loginBox > form > #buttonBox > button{
+    padding: 10px 100px;
+    float: right;
+    text-align: center;
+    background: cornflowerblue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#loginLayer > #loginPage > #loginBox > form > #buttonBox > button:hover{
+    filter: brightness(130%);
+    transition: 0.5s;
+}

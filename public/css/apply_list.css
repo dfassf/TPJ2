@@ -1,0 +1,137 @@
+/* apply */
+#applyLayer{
+    width: 1920px;
+    height: 100%;
+    padding-top: 56px;
+}
+#applyLayer > #applyPage{
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+#applyLayer > #applyPage > #applyBox{
+    width: 1160px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 80px 20px 140px 20px;
+}
+#applyLayer > #applyPage > #applyBox > h1{
+    padding-bottom: 20px;
+    font-size: 60px;
+    color: #fff;
+}
+#applyLayer > #applyPage > #applyBox > #content{
+    padding: 50px 100px;
+    border-top: 1px solid lightgray;
+}
+#applyLayer > #applyPage > #applyBox > #content > h3{
+    color: #fff;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f7b10a;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > ul{
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid lightgray;
+    padding: 10px 0px;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > ul > li{
+    height: 40px;
+    float: left;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > ul > li:first-child{
+    width: 90px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    border-right: 1px solid lightgray;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > ul > li:nth-child(2){
+    color: #fff;
+    line-height: 40px;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > ul > li:nth-child(2) > input{
+    width: 200px;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > ul > li:nth-child(2) > select{
+    margin-left: 20px;
+    margin-right: 5px;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > ul > li:nth-child(2) > textarea{
+    width: 810px;
+    height: 180px;
+    margin-left: 20px;
+    padding: 10px;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > ul:nth-child(3) > li:nth-child(2) > input{
+    width: 20px;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > ul:nth-child(4) > li:nth-child(2) > input{
+    width: 100px;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > h3{
+    color: #fff;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f7b10a;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #privacy{
+    height: 200px;
+    margin: 10px 20px;
+    padding: 20px 20px;
+    background: #fff;
+    border: 1px solid lightgray;
+    overflow-y: scroll;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #privacy > p{
+    margin-bottom: 5px;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #btnGroup_right{
+    padding-top: 20px;
+    padding-left: 670px;
+    color: #fff;
+    border-top: 1px solid lightgray;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #btnGroup_right > input{
+    margin-left: 20px;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #btnGroup_right > span{
+    margin-left: 5px;
+    font-size: 14px;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #btnGroup_center{
+    margin-top: 30px;
+    text-align: center;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #btnGroup_center > button{
+    padding: 10px 40px;
+    cursor: pointer;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #btnGroup_center > button:first-child{
+    margin: 30px 0px;
+    border: 1px solid #007bc6;
+    border-radius: 5px;
+    color: #fff;
+    background: #006fb2;
+    
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #btnGroup_center > button:first-child:hover{
+    border: 1px solid rgb(17, 230, 230);
+    filter: brightness(130%);
+    transition: 0.5s;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #btnGroup_center > button:nth-child(2){
+    margin: 30px 0px;
+    border: 1px solid #007bc6;
+    border-radius: 5px;
+    color: #007bc6;
+    background: #fff;
+}
+#applyLayer > #applyPage > #applyBox > #content > form > #btnGroup_center > button:nth-child(2):hover{
+    color: #fff;
+    border: 1px solid rgb(17, 230, 230);
+    background: #007bc6;
+    filter: brightness(130%);
+    transition: 0.5s;
+}

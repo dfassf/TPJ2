@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user_view</title>
+    <link rel="stylesheet" href="/css/admin_user_view.css">
+
+ 
+</head>
+
+<body>
+    <div id="wrap">
+        {% include "../layout/admin_top.html" %}
+
+        <!--user_view start-->
+        <div id="content">
+            <div id="listLayer">
+                <div id="listPage">
+                    <h2>회원조회</h2>
+                    <div id="listBox">
+                        <table>
+                            <colgroup>
+                                <col width="10%">
+                                <col width="90%">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>회원번호</th>
+                                    <td>{{result.id}}</td>
+                                </tr>
+                                <tr>
+                                    <th>가입일</th>
+                                    <td>{{joinDate}}</td>
+                                </tr>
+                                <tr>
+                                    <th>아이디</th>
+                                    <td>{{result.userid}}</td>
+                                </tr>
+                                <tr>
+                                    <th>이름</th>
+                                    <td>{{result.username}}</td>
+                                </tr>
+                                <tr>
+                                    <th>성별</th>
+                                    <td>
+                                        {% if result.gender == 1 %}
+                                        남자
+                                        {% elif result.gender == 0 %}
+                                        여자
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>연락처</th>
+                                    <td>{{result.userphone}}</td>
+                                </tr>
+                                <tr>
+                                    <th>이메일</th>
+                                    <td>
+                                        {% if result.useremail == '' %}
+                                        -----
+                                        {% else %}
+                                        {{result.useremail}}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>교육과정</th>
+                                    <td>
+                                        <!-- <form method="post" action="/admin/user/asd"> -->
+                                            <select id="dropBox" name="currSel">
+                                            <option value="">선택</option>
+
+                                            </select>
+                                            <input type="hidden" style="display:none" name="postid" id="postid" value="{{result.id}}">
+                                            <button id = "addCurr">추가</button>
+                                        <!-- </form> -->
+
+                                        <div id="loadCurrDiv">
+
+                                        </div>
+                           
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>회원종류</th>
+                                    <td>
+                                        {{usertype}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <button type="button" onclick="location.href='http://localhost:3000/admin/user/'">목록으로</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--user_view end-->
+
+    </div>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script type="text/javascript" src="/js/admin_user_view.js"></script>
+</body>
+
+</html>

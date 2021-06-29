@@ -1,0 +1,104 @@
+/* listLayer > searchBox */
+#listLayer > #listPage > #searchBox{
+    height: 70px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #777;
+}
+#listLayer > #listPage > #searchBox > ul > form > li{
+    padding-right: 30px;
+    float: left;
+}
+#listLayer > #listPage > #searchBox > ul > form > li > input{
+    margin: 0px 5px;
+    float: left;
+}
+#listLayer > #listPage > #searchBox > ul > form > li > span{
+    float: left;
+    font-size: 14px;
+    line-height: 20px;
+}
+#listLayer > #listPage > #searchBox > ul > form > li > select{
+    margin-left: 3px;
+    float: left;
+}
+#listLayer > #listPage > #searchBox > ul > button{
+    padding: 0px 5px;
+}
+#listLayer > #listPage > #searchBox > #btnGroup_right{
+    width: 100%;
+    margin-top: 20px;
+    float: right;
+}
+#listLayer > #listPage > #searchBox > #btnGroup_right > span{
+    margin-left: 5px;
+    font-size: 14px;
+}
+#listLayer > #listPage > #searchBox > #btnGroup_right > button{
+    margin-left: 20px;
+    padding: 0px 20px;
+}
+
+/* listLyaer > listBox */
+#listLayer > #listPage > #listBox{
+    width: 100%;
+    margin-top: 20px;
+}
+#listLayer > #listPage > #listBox > form > table{
+    width: 100%;
+    text-align: center;
+    border-top: 3px solid cornflowerblue;
+    border-bottom: 3px solid cornflowerblue;
+}
+#listLayer > #listPage > #listBox > form > table > thead{
+    background: blanchedalmond;
+}
+#listLayer > #listPage > #listBox > form > table > thead > tr > th{
+    border-bottom: 1px solid #999;
+}
+#listLayer > #listPage > #listBox > form > table > tbody > tr > td{
+    padding: 20px 20px;
+    font-size: 15px;
+    border-bottom: 1px solid #999;
+}
+#listLayer > #listPage > #listBox > form > table > tbody > tr:last-child > td{
+    border: none;
+}
+#listLayer > #listPage > #listBox > form > table > tbody > tr > td:nth-child(2){
+    text-align: left;
+    cursor: pointer;
+}
+#listLayer > #listPage > #listBox > form > table > tbody > tr > td > a > span{
+    color: lightseagreen;
+    font-weight: bold;
+}
+#listLayer > #listPage > #listBox > form > table > tbody > tr > td > a > p{
+    color: #000;
+}
+#listLayer > #listPage > #listBox > form > table > tbody > tr > td > input{
+    margin-right: 5px;
+}
+#listLayer > #listPage > #listBox > form > table > tbody > tr > td > button{
+    padding: 0px 5px;
+}
+
+/* listLyaer > pageBtn */
+#listLayer > #listPage > #pageBtn{
+    margin-top: 50px;
+    text-align: center;
+}
+#listLayer > #listPage > #pageBtn > button{
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #000;
+    border: 1px solid #c7c7c7;
+    cursor: pointer;
+}
+#listLayer > #listPage > #pageBtn > button:hover{
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+    transition: 0.5s;
+}

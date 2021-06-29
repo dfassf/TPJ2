@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <script type="text/javascript" src="/js/FAQ.js"></script>
+    <link rel="stylesheet" href="/css/FAQ.css">
+</head>
+
+<body>
+{% include "../layout/top.html" %}
+
+    <!--FAQ start-->
+    <div id="FAQLayer">
+        <div id="FAQPage">
+            <div id="FAQBox">
+                <h1>FAQ</h1>
+
+                <div id="category">
+                    <div id="category_all" class="ctgBtn_0">전체</div>
+                    {% for item in categoryList %}
+                    <div id="category_{{loop.index}}" class="ctgBtn ctgBtn_{{loop.index}}">{{item.subject}}</div>
+                    {% endfor %}
+                </div>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+                <script type="text/javascript">
+                    let ctgBtn = document.querySelectorAll('.ctgBtn')
+                    for(let i=0; i<ctgBtn.length; i++){
+                        ctgBtn[i].addEventListener('click',async function(){
+                            let selectedCurr = await axios.post('http://localhost:3000/faq/test', {
+                                title: ctgBtn[i].innerHTML
+                            })
+                        })
+                    }
+                </script>
+                <div id="QNA" class="QNA_all" style="display: none;">
+                    {% for item in faqList %}
+                    <div>{{item.title}}<span>▽</span></div>
+                    <ul id="text">
+                        <li>item.content</li>
+                    </ul>
+                    {% endfor %}
+                </div>
+                <script type="text/javascript">
+                
+                </script>
+                {% set count = 1%}
+                {% for item in categoryList %}
+                <div id="QNA" class="QNA_{{loop.index}}" style="display: block;">
+                    {% for item2 in faqList %}
+                    
+                    {% if item2.category == 3 %}
+                    <div>{{item2.title}}<span>▽</span></div>
+                    <ul id="text">
+                        <li>{{item2.content}}</li>
+                    </ul>
+                    {% endif %}
+
+                    {% endfor %}
+                </div>
+                {% set count = count +1 %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!--FAQ end-->
+
+{% include "../layout/bottom.html" %}

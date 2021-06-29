@@ -1,0 +1,11 @@
+{% if json != undefined %}
+<script type="text/javascript">
+    let result = `{{json.result}}`;
+    let msg = `{{json.msg}}`
+    let move = `{{json.move}}`;
+
+    alert(msg)
+    window.location.href ='{{json.move}}'
+</script>
+{%  endif %}
+
