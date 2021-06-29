@@ -58,11 +58,9 @@ router.post('/auth/local/logout', async (req, res) => {
 
     if(getUserType.dataValues!==undefined || getUserType!==null){
         if(getUserType.dataValues.usertype==2){
-            console.log('admin logout')
+            console.log('어드민 페이지')
             req.session.modLogin = undefined
-            res.redirect('/admin')
-            return;
-        } else(console.log('normal users'))
+        } else(console.log('사용자단 페이지'))
     }
     res.clearCookie('AccessToken');
     req.session.isLogin = false;

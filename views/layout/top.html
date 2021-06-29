@@ -437,17 +437,12 @@
             <script type = "text/javascript">
                 const logoutBtn = document.querySelector('.logoutBtn')
                 logoutBtn.addEventListener('click',async function(){
-                    let srcPath = document.querySelector('#srcPath')
-                    srcPath.value=`${location.pathname}${location.search}`;
-                    console.log(srcPath.value)
                     alert('로그아웃 되셨습니다.')
-                    console.log('this')
                     let userLogOut = await axios.post('http://localhost:3000/auth/local/logout',{
                         srcPath: srcPath.value,
                     })
-                    console.log('this')
                     location.reload()
-                    console.log('this')
+
                 })
             </script>
             {% else %}

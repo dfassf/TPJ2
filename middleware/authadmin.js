@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
         let json = {
             result: false,
             msg: '관리자에게만 접근 권한이 있습니다.',
-            move: 'http://localhost:3000/'
+            move: 'http://localhost:3000/admin'
         }
         res.render('../views/admincheck.html', { json })
         return 0;
@@ -28,7 +28,7 @@ module.exports = async (req, res, next) => {
             let json = {
                 result: false,
                 msg: '관리자에게만 접근 권한이 있습니다.',
-                move: 'http://localhost:3000/'
+                move: 'http://localhost:3000/admin'
             }
             res.render('../views/admincheck.html', { json })
             return 0;

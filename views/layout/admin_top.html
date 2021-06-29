@@ -187,9 +187,8 @@
 
             alert('로그아웃 되셨습니다.')
             console.log('this')
-            let admLogOut = await axios.post('http://localhost:3000/auth/local/logout',{
-                ifAdmin: true
-            })
+            console.log()
+            let admLogOut = await axios.post('http://localhost:3000/auth/local/logout')
             location.href="http://localhost:3000/admin/"
             
         })

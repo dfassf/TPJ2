@@ -26,5 +26,13 @@
     "sequelize-cli": "^6.2.0",
     "session": "^0.1.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dfassf/TPJ2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dfassf/TPJ2/issues"
+  },
+  "homepage": "https://github.com/dfassf/TPJ2#readme",
   "description": ""
 }

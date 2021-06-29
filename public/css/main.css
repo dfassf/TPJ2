@@ -1,38 +1,42 @@
-/*container*/
-
-#boardFull {
-    width:1920px;
-    height:100%;
-    background:#000;
-}
-
+/* container */
 .container {
-    padding: 20%;
-    color: white;
-    z-index: 500;
+    padding: 10% 20%;
+    color: wheat;
+    z-index: 89;
 }
-.container > h1 {
+.container > .textBox{
+    color: wheat;
+}
+.container > .textBox > h1{
     font-size: 50px;
 }
-.container > p {
-    margin: 80px 0;
-    font-size: 24px;
+.container > .textBox > h2{
+    font-size: 40px;
+    margin-bottom: 20px;
 }
+.container > .textBox > h5{
+    margin-bottom: 20px;
+}
+.container > .textBox > h3:last-child{
+    margin-bottom: 40px;
+}
+
 .btn{
+    display: inline-block;
     width: 176px;
     height: 56px;
-    display: inline-block;
-    border: 1px solid #fff;
-    box-sizing: border-box;
-    font-size: 18px;
     padding: 14px 0 0 54px;
-    color: white;
+    font-size: 18px;
+    color: wheat;
+    border: 1px solid wheat;
+    box-sizing: border-box;
+    background: #000000a6;
 }
 .btn_1 {
     margin-right: 24px;
 }
 .btn:hover{
-    background: #fff;
+    background: wheat;
     color:#000;
     animation: btn1 0.5s ;
     animation-fill-mode: forwards;
@@ -40,10 +44,10 @@
 @keyframes btn1{
     from {
         background:none;
-        color:#fff;
+        color:wheat;
     }
     to {
-        background: #fff;
+        background: wheat;
         color: black;
     }
 }

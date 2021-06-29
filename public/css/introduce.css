@@ -16,7 +16,7 @@
 }
 
 .content{
-    margin-top: 50px;
+    margin: 50px 0px;
     width: 1200px;
     height: 500px;
 }
@@ -27,6 +27,14 @@
     font-size: 32px;
     font-weight: bold;
     color: white;
+}
+.left_content > div > h5{
+    text-decoration: underline;
+}
+.left_content > div > h5:nth-child(2){
+    text-decoration: none;
+    margin-right: 10px;
+    float: right;
 }
 
 .logoimg{
@@ -42,5 +50,9 @@
     margin-left: 30px;
     font-size: 16px;
     color: white;
+}
+.right_content > p > span{
+    float: right;
+    font-weight: bold;
 }
 
