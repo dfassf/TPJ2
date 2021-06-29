@@ -1,0 +1,100 @@
+            <!--footer start-->
+            <div id="footer_wrap">
+                <div class="footer mobile">
+                    <ul class="footer_menu">
+                        <li class="string_bold">42 SEOUL</li>
+                        <li class="string_bold">Innovation Acamemy</li>
+                    </ul>
+                    <ul class="footer_menu">
+                        <li class="string_bold">CONTACT</li>
+                        <li>qna@innovationacademy.kr</li>
+                    </ul>
+                    <ul class="footer_menu">
+                        <li class="string_bold">LOCATION</li>
+                        <li>416, Gaepo-ro, Gangnam-gu,</li>
+                        <li>Seoul, Republic of Korea</li>
+                    </ul>
+                    <div class="footer_menu">
+                        <img src="/images/img1.svg">
+                        <img src="/images/img2.svg">
+                        <img src="/images/img3.svg">
+                    </div>
+                    <input id="srcPath" type="hidden">
+                </div>
+            </div>
+            <!--footer end-->
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script type = "text/javascript">
+
+
+    function login_init(){
+ 
+    const loginBtn = document.querySelector('#loginBtn');
+    const loginLayer = document.querySelector('#loginLayer');
+    const localLoginBtn = document.querySelector('#login');
+
+    loginBtn.addEventListener('click',loginPopupOpen);
+    loginLayer.addEventListener('click', loginPopupClose);
+    localLoginBtn.addEventListener('click', localLoginFn);
+    
+    // 로그인 팝업
+    function loginPopupOpen(){
+        console.log(loginLayer)
+        loginLayer.classList.add('show');
+    }
+    function loginPopupClose(event){
+        if (event.target == this){
+            this.classList.remove('show');
+        }
+    }
+    function loginPopupClose2(){
+        loginLayer.classList.remove('show');
+    }
+
+    async function localLoginFn(){
+        console.log('로그인 시도중')
+        
+        const userid = document.querySelector('#userid');
+        const userpw = document.querySelector('#userpw');
+        let url = 'http://localhost:3000/auth/local/login'
+
+        let options = {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                userid:userid.value,
+                userpw:userpw.value,
+            })
+        }
+        
+        console.log(options);
+
+        let response = await fetch(url,options);
+        let json = await response.json();
+        let {result, msg, id} = json;
+        
+        console.log('result : ',result);
+
+        if(result){
+            console.log('로그인 완료');
+            loginPopupClose2();
+            alert(`${id}님 환영합니다`)
+            location.reload()
+        } else{
+            console.log('로그인 실패');
+            userid.value = '';
+            userpw.value = '';
+            userid.focus();
+            alert('아이디 또는 패스워드가 일치하지 않습니다')
+        }
+    }
+}
+document.addEventListener('DOMContentLoaded', login_init);
+</script>
+</html>

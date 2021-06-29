@@ -2,16 +2,17 @@
             <div id="footer_wrap">
                 <div class="footer mobile">
                     <ul class="footer_menu">
-                        <li class="string_bold">42 SEOUL</li>
-                        <li class="string_bold">Innovation Acamemy</li>
+                        <li class="string_bold">Kyungil Technical College</li>
+                        <li>All rights reserved</li>
                     </ul>
                     <ul class="footer_menu">
                         <li class="string_bold">CONTACT</li>
-                        <li>qna@innovationacademy.kr</li>
+                        <li>TEL : 02-479-4050</li>
+                        <li>FAX : 02-479-4056</li>
                     </ul>
                     <ul class="footer_menu">
                         <li class="string_bold">LOCATION</li>
-                        <li>416, Gaepo-ro, Gangnam-gu,</li>
+                        <li>995, Cheonho-daero, Gangdong-gu,</li>
                         <li>Seoul, Republic of Korea</li>
                     </ul>
                     <div class="footer_menu">
@@ -19,19 +20,15 @@
                         <img src="/images/img2.svg">
                         <img src="/images/img3.svg">
                     </div>
-                    <input id="srcPath" type="hidden">
                 </div>
             </div>
             <!--footer end-->
         </div>
     </div>
 </body>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
 <script type = "text/javascript">
-
-
     function login_init(){
- 
     const loginBtn = document.querySelector('#loginBtn');
     const loginLayer = document.querySelector('#loginLayer');
     const localLoginBtn = document.querySelector('#login');
@@ -42,7 +39,6 @@
     
     // 로그인 팝업
     function loginPopupOpen(){
-        console.log(loginLayer)
         loginLayer.classList.add('show');
     }
     function loginPopupClose(event){
@@ -73,7 +69,7 @@
             })
         }
         
-        console.log(options);
+        console.log('options : ',options);
 
         let response = await fetch(url,options);
         let json = await response.json();
@@ -84,8 +80,6 @@
         if(result){
             console.log('로그인 완료');
             loginPopupClose2();
-            alert(`${id}님 환영합니다`)
-            location.reload()
         } else{
             console.log('로그인 실패');
             userid.value = '';
