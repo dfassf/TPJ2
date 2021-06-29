@@ -7,9 +7,9 @@ const {sequelize, Curriculum} = require('../../models/index')
 router.get('/',async (req,res)=>{
     try{
         let result = await Curriculum.findAll({})
-        res.render('../views/curr/curr_index.html',{
-            noticeList:result,
-            isLogin: req.session.isLogin
+        res.render('../views/user/cource.html',{
+            ccList:result,
+            isLogin: req.session.isLogin,
     })
     } catch(e){console.log(e)}
 })
@@ -25,7 +25,7 @@ router.get('/view',async (req,res)=>{
         // 하여 배열에 담는다
         res.render('./faq/view.html',{
             result,
-            isLogin: req.session.isLogin
+            isLogin: req.session.isLogin,
         });
         } catch(e){console.log(e)}
 })

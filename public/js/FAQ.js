@@ -1,117 +1,66 @@
-// const FAQ_init = () =>{
-//     // 카테고리 클릭 시 그에 맞는 내용으로 QNA 변경
-//     const ctg = document.querySelectorAll(".ctgBtn_0, .ctgBtn_1, .ctgBtn_2, .ctgBtn_3, .ctgBtn_4, .ctgBtn_5, .ctgBtn_6");
-//     const ctg_all_btn = document.querySelector('#category_all');
-//     const ctg_1_btn = document.querySelector('#category_1');
-//     const ctg_2_btn = document.querySelector('#category_2');
-//     const ctg_3_btn = document.querySelector('#category_3');
-//     const ctg_4_btn = document.querySelector('#category_4');
-//     const ctg_5_btn = document.querySelector('#category_5');
-//     const ctg_6_btn = document.querySelector('#category_6');
+const FAQ_init = () =>{
+    console.log('FAQ IN');
 
-//     const QNA = document.querySelectorAll(".QNA_all, .QNA_1, .QNA_2, .QNA_3, .QNA_4, .QNA_5, .QNA_6");
-//     const QNA_all = document.querySelector('.QNA_all');
-//     const QNA_1 = document.querySelector('.QNA_1');
-//     const QNA_2 = document.querySelector('.QNA_2');
-//     const QNA_3 = document.querySelector('.QNA_3');
-//     const QNA_4 = document.querySelector('.QNA_4');
-//     const QNA_5 = document.querySelector('.QNA_5');
-//     const QNA_6 = document.querySelector('.QNA_6');
+    let ctg = document.getElementsByClassName('ctg');
+    let faq = document.getElementsByClassName('faq');
+    let getQna = document.querySelector('.getQna')
 
-//     ctg_all_btn.addEventListener('click',getQNA_all);
-//     ctg_1_btn.addEventListener('click',getQNA_1);
-//     ctg_2_btn.addEventListener('click',getQNA_2);
-//     ctg_3_btn.addEventListener('click',getQNA_3);
-//     ctg_4_btn.addEventListener('click',getQNA_4);
-//     ctg_5_btn.addEventListener('click',getQNA_5);
-//     ctg_6_btn.addEventListener('click',getQNA_6);
+    // let arr = [];
 
-//     function getQNA_all(){
-//         for (var i=0; i<QNA.length; i++){
-//             var item1 = ctg.item(i);
-//             var item2 = QNA.item(i);
-//             item1.style.color = '';
-//             item1.style.background = '';
-//             item2.style.display = '';
-//         }
-//         ctg_all_btn.style.color = '#000';
-//         ctg_all_btn.style.background = '#fff';
-//         QNA_all.style.display = 'block';
-//     }
-//     function getQNA_1(){
-//         for (var i=0; i<QNA.length; i++){
-//             var item1 = ctg.item(i);
-//             var item2 = QNA.item(i);
-//             item1.style = '';
-//             item1.style = '';
-//             item2.style = '';
-//         }
-//         ctg_1_btn.style.color = '#000';
-//         ctg_1_btn.style.background = '#fff';
-//         QNA_1.style.display = 'block';
-//     }
-//     function getQNA_2(){
-//         for (var i=0; i<QNA.length; i++){
-//             var item1 = ctg.item(i);
-//             var item2 = QNA.item(i);
-//             item1.style = '';
-//             item1.style = '';
-//             item2.style = '';
-//         }
-//         ctg_2_btn.style.color = '#000';
-//         ctg_2_btn.style.background = '#fff';
-//         QNA_2.style.display = 'block';
-//     }
-//     function getQNA_3(){
-//         for (var i=0; i<QNA.length; i++){
-//             var item1 = ctg.item(i);
-//             var item2 = QNA.item(i);
-//             item1.style = '';
-//             item1.style = '';
-//             item2.style = '';
-//         }
-//         ctg_3_btn.style.color = '#000';
-//         ctg_3_btn.style.background = '#fff';
-//         QNA_3.style.display = 'block';
-//     }
-//     function getQNA_4(){
-//         for (var i=0; i<QNA.length; i++){
-//             var item1 = ctg.item(i);
-//             var item2 = QNA.item(i);
-//             item1.style = '';
-//             item1.style = '';
-//             item2.style = '';
-//         }
-//         ctg_4_btn.style.color = '#000';
-//         ctg_4_btn.style.background = '#fff';
-//         QNA_4.style.display = 'block';
-//     }
-//     function getQNA_5(){
-//         for (var i=0; i<QNA.length; i++){
-//             var item1 = ctg.item(i);
-//             var item2 = QNA.item(i);
-//             item1.style = '';
-//             item1.style = '';
-//             item2.style = '';
-//         }
-//         ctg_5_btn.style.color = '#000';
-//         ctg_5_btn.style.background = '#fff';
-//         QNA_5.style.display = 'block';
-//     }
-//     function getQNA_6(){
-//         for (var i=0; i<QNA.length; i++){
-//             var item1 = ctg.item(i);
-//             var item2 = QNA.item(i);
-//             item1.style = '';
-//             item1.style = '';
-//             item2.style = '';
-//         }
-//         ctg_6_btn.style.color = '';
-//         ctg_6_btn.style.background = '';
-//         QNA_6.style.display = 'block';
-//     }
+    // for (let i=0; i<faq.length; i++){
+    //     arr.push(faq[i]);
+    // }
 
-//     // QNA 클릭 시 해당 QNA의 상세내용 출력
 
-// }
-// document.addEventListener('DOMContentLoaded', FAQ_init);
+    for (let i=0; i<ctg.length; i++){
+        ctg[i].addEventListener('click', async function(){
+            let ctgId = ctg[i].className.split('_')[1]
+            while (getQna.hasChildNodes()) { getQna.removeChild(getQna.firstChild); }
+            console.log(ctgId);
+            let ctgSend = await axios.post('http://localhost:3000/faq/load', {
+                ctgId    
+            })
+            let loadFaq = ctgSend.data.test
+            
+            for(let j=0; j<loadFaq.length; j++){
+                
+                console.log(loadFaq[j].title)
+
+                let mDiv = document.createElement('div')
+                let mUl = document.createElement('ul')
+                let mUl2 = document.createElement('ul')
+                let mLi = document.createElement('li')
+                let mSpan = document.createElement('span')
+
+                mLi.innerHTML = loadFaq[j].content
+                mSpan.innerHTML = '▽'
+                mUl2.className = 'faqSub'
+                mUl.innerHTML = `${loadFaq[j].title}`
+                mDiv.className=`faq faq_${loadFaq[j].category}`
+                mUl.appendChild(mSpan)
+                mUl2.appendChild(mLi)
+                mDiv.appendChild(mUl)
+                mDiv.appendChild(mUl2)
+                getQna.appendChild(mDiv)
+                
+                let state=true;
+                mUl.addEventListener('click',openMenu)
+                function openMenu(){
+                    if(state){
+                            mUl2.style.display='block';
+                            mSpan.innerHTML='△'
+                    } else{
+                            mUl2.style.display='none';
+                            mSpan.innerHTML = '▽'
+                    }
+                    state =! state
+                }
+            }
+        })
+    }
+
+    console.log('FAQ OUT');
+
+   
+}
+document.addEventListener('DOMContentLoaded', FAQ_init)

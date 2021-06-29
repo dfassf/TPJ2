@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Curriculum</title>
+        <script type="text/javascript" src="/routes/board/curriculum.js"></script>
+        <link rel="stylesheet" href="/css/cource.css">
+    </head>
+    <body>
+      
+        {% include "../layout/top.html" %}
+
+            <!--container start-->
+            <div class="container">
+                <h1>Curriculum
+                </h1>
+                <div class="content">
+                    <ul>
+                        {% for item in ccList %}
+                        <li class="content_box">
+                            
+                            <h2>{{item.subject}}<br>
+                                <div class="circle">
+                                    <div id="circle"></div>
+                                </div></h2> 
+                            
+                            <span>교육시작일 {{item.start_date}}</span><br>
+                            <span>교육종료일 {{item.end_date}}</span><br>
+                            <span>내용</span> <br/><p style="display:inline-block">{{item.content}}</p><br>
+
+                            <div class="content_row">
+
+                            </div>
+                            
+                        </li> 
+                        {% endfor %}
+                    </ul>
+                </div>
+              
+            </div>
+            <!--container end-->
+
+            {% include "../layout/bottom.html" %}

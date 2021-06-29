@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const introRouter = require('./board/introduce'); 
 const notiRouter = require('./board/notice');
 const currRouter = require('./board/curriculum');
 const joinRouter = require('./users/users');
@@ -20,6 +21,7 @@ const mainRouter = require('./main/main');
 const mainAdminRouter = require('./main/main_admin');
 const auth = require('../middleware/auth')
 
+router.use('/introduce', auth, introRouter);
 router.use('/notice', auth, notiRouter)
 router.use('/curr', auth, currRouter);
 router.use('/user', auth, joinRouter);

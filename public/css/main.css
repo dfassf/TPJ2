@@ -102,6 +102,11 @@
     .container>p{
         font-size: 20px;
     }
+
+    .scene{
+        margin-left: 65px !important;
+    }
+
     /*mobile hamberger css*/
     input[id="menu"] {
         display: none;
@@ -114,6 +119,7 @@
         top: 70px;
         right: 50px;
         cursor: pointer;
+        z-index: 999;
     }
     input[id="menu"] + label span {
         position: absolute;
