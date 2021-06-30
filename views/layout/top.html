@@ -4,6 +4,14 @@
         padding:0;
         user-select: none;
     }
+
+    
+    .noScrolling{
+            overflow:hidden;
+            
+        }
+
+
     div{
         display: block;
     }
@@ -394,9 +402,9 @@
         <div id="loginPopup" style="margin-top: 200px;">
             <div id="loginForm">
                 <h2>로그인</h2>
-                <input id="userid" type="text" placeholder="아이디">
-                <input id="userpw" type="password" placeholder="비밀번호">
-                <button id="login" class="loginSubmit">로그인</button>
+                <input id="userid" type="text" placeholder="아이디" tabindex="1">
+                <input id="userpw" type="password" placeholder="비밀번호" tabindex="2">
+                <button id="login" class="loginSubmit" tabindex="3">로그인</button>
                 <div id="or">
                     <div id="line"></div>
                     <div id="or_text"><h3>또는</h3></div>

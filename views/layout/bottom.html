@@ -33,6 +33,7 @@
     const loginLayer = document.querySelector('#loginLayer');
     const localLoginBtn = document.querySelector('#login');
 
+
     loginBtn.addEventListener('click',loginPopupOpen);
     loginLayer.addEventListener('click', loginPopupClose);
     localLoginBtn.addEventListener('click', localLoginFn);
@@ -40,10 +41,12 @@
     // 로그인 팝업
     function loginPopupOpen(){
         loginLayer.classList.add('show');
+        document.body.classList.add('noScrolling')
     }
     function loginPopupClose(event){
         if (event.target == this){
             this.classList.remove('show');
+            document.body.classList.remove('noScrolling')
         }
     }
     function loginPopupClose2(){
