@@ -52,6 +52,7 @@ router.post('/auth/local/login', async(req,res)=>{
         console.log('관리자 로그인 성공!')
         res.cookie('AccessToken',token2,{httpOnly:true, secure:true})
         req.session.modLogin = true;
+        req.session.isLogin = true;
     }
     res.json(result)
 })

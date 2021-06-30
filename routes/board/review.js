@@ -226,7 +226,7 @@ router.get('/write', async (req, res) => {
                 let userClass = userCurr.dataValues.userclass
 
                 //로그인은 되어있으나 수강기록x 
-                if (userClass == null || userClass == undefined) {
+                if (userClass == null || userClass == undefined || userClass == '') {
                     let reviewAuth = {
                         msg: '후기를 작성할 수 있는 수강 기록이 없습니다.',
                         move: 'http://localhost:3000/review'
